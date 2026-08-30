@@ -1,0 +1,563 @@
+state,skill,count,state_total,demand_score
+Andhra Pradesh,Business Analysis,1,7,0.14285714285714285
+Andhra Pradesh,Customer Support / BPO,1,7,0.14285714285714285
+Andhra Pradesh,Marketing & SEO,1,7,0.14285714285714285
+Andhra Pradesh,Sales & Business Development,3,7,0.42857142857142855
+Andhra Pradesh,Supply Chain & Logistics,1,7,0.14285714285714285
+Assam,Business Analysis,2,174,0.011494252873563218
+Assam,Cloud Computing (AWS/GCP/Azure),2,174,0.011494252873563218
+Assam,Customer Support / BPO,9,174,0.05172413793103448
+Assam,Cybersecurity,2,174,0.011494252873563218
+Assam,Data Science & Analytics,3,174,0.017241379310344827
+Assam,ERP & CRM,4,174,0.022988505747126436
+Assam,Excel,2,174,0.011494252873563218
+Assam,Finance & Accounting,5,174,0.028735632183908046
+Assam,Frontend Frameworks,1,174,0.005747126436781609
+Assam,Human Resources (HR) & Recruitment,9,174,0.05172413793103448
+Assam,Industrial & Manufacturing,6,174,0.034482758620689655
+Assam,Java,1,174,0.005747126436781609
+Assam,JavaScript,1,174,0.005747126436781609
+Assam,Marketing & SEO,18,174,0.10344827586206896
+Assam,Project & Product Management,10,174,0.05747126436781609
+Assam,SAP,12,174,0.06896551724137931
+Assam,SQL / Relational DBs,2,174,0.011494252873563218
+Assam,Sales & Business Development,57,174,0.3275862068965517
+Assam,Soft Skills (Communication/Leadership),19,174,0.10919540229885058
+Assam,Software Testing / QA,4,174,0.022988505747126436
+Assam,Supply Chain & Logistics,5,174,0.028735632183908046
+Bihar,Agile & Scrum,11,620,0.017741935483870968
+Bihar,Backend Frameworks,7,620,0.01129032258064516
+Bihar,Business Analysis,5,620,0.008064516129032258
+Bihar,C# / .NET,2,620,0.0032258064516129032
+Bihar,C/C++,2,620,0.0032258064516129032
+Bihar,Cloud Computing (AWS/GCP/Azure),7,620,0.01129032258064516
+Bihar,Customer Support / BPO,42,620,0.06774193548387097
+Bihar,Cybersecurity,5,620,0.008064516129032258
+Bihar,Data Engineering (ETL/Big Data),2,620,0.0032258064516129032
+Bihar,Data Science & Analytics,13,620,0.020967741935483872
+Bihar,DevOps & CI/CD,4,620,0.0064516129032258064
+Bihar,ERP & CRM,2,620,0.0032258064516129032
+Bihar,Excel,15,620,0.024193548387096774
+Bihar,Finance & Accounting,45,620,0.07258064516129033
+Bihar,Frontend Frameworks,11,620,0.017741935483870968
+Bihar,Git / Version Control,9,620,0.014516129032258065
+Bihar,Human Resources (HR) & Recruitment,24,620,0.03870967741935484
+Bihar,Industrial & Manufacturing,29,620,0.0467741935483871
+Bihar,Java,2,620,0.0032258064516129032
+Bihar,JavaScript,10,620,0.016129032258064516
+Bihar,Machine Learning & AI,7,620,0.01129032258064516
+Bihar,Marketing & SEO,53,620,0.08548387096774193
+Bihar,Mobile App Development,1,620,0.0016129032258064516
+Bihar,NoSQL DBs,1,620,0.0016129032258064516
+Bihar,Project & Product Management,18,620,0.02903225806451613
+Bihar,Python,3,620,0.004838709677419355
+Bihar,SAP,10,620,0.016129032258064516
+Bihar,SQL / Relational DBs,12,620,0.01935483870967742
+Bihar,Sales & Business Development,155,620,0.25
+Bihar,Soft Skills (Communication/Leadership),88,620,0.14193548387096774
+Bihar,Software Testing / QA,12,620,0.01935483870967742
+Bihar,Supply Chain & Logistics,13,620,0.020967741935483872
+Chandigarh,Agile & Scrum,14,1222,0.011456628477905073
+Chandigarh,Backend Frameworks,13,1222,0.010638297872340425
+Chandigarh,Business Analysis,21,1222,0.01718494271685761
+Chandigarh,Business Intelligence (BI),1,1222,0.0008183306055646482
+Chandigarh,C# / .NET,5,1222,0.004091653027823241
+Chandigarh,C/C++,3,1222,0.0024549918166939444
+Chandigarh,Cloud Computing (AWS/GCP/Azure),19,1222,0.015548281505728314
+Chandigarh,Customer Support / BPO,170,1222,0.13911620294599017
+Chandigarh,Cybersecurity,11,1222,0.00900163666121113
+Chandigarh,Data Engineering (ETL/Big Data),3,1222,0.0024549918166939444
+Chandigarh,Data Science & Analytics,22,1222,0.01800327332242226
+Chandigarh,DevOps & CI/CD,23,1222,0.018821603927986905
+Chandigarh,ERP & CRM,30,1222,0.024549918166939442
+Chandigarh,Excel,17,1222,0.013911620294599018
+Chandigarh,Finance & Accounting,61,1222,0.04991816693944354
+Chandigarh,Frontend Frameworks,30,1222,0.024549918166939442
+Chandigarh,Git / Version Control,10,1222,0.008183306055646482
+Chandigarh,Human Resources (HR) & Recruitment,54,1222,0.044189852700491
+Chandigarh,Industrial & Manufacturing,31,1222,0.02536824877250409
+Chandigarh,Java,18,1222,0.014729950900163666
+Chandigarh,JavaScript,23,1222,0.018821603927986905
+Chandigarh,Machine Learning & AI,7,1222,0.0057283142389525366
+Chandigarh,Marketing & SEO,70,1222,0.057283142389525366
+Chandigarh,Mobile App Development,4,1222,0.0032733224222585926
+Chandigarh,NoSQL DBs,2,1222,0.0016366612111292963
+Chandigarh,Project & Product Management,35,1222,0.028641571194762683
+Chandigarh,Python,15,1222,0.012274959083469721
+Chandigarh,SAP,59,1222,0.04828150572831424
+Chandigarh,SQL / Relational DBs,25,1222,0.020458265139116204
+Chandigarh,Sales & Business Development,213,1222,0.17430441898527005
+Chandigarh,Soft Skills (Communication/Leadership),179,1222,0.14648117839607203
+Chandigarh,Software Testing / QA,14,1222,0.011456628477905073
+Chandigarh,Supply Chain & Logistics,20,1222,0.016366612111292964
+Chhattisgarh,Business Analysis,4,311,0.012861736334405145
+Chhattisgarh,C/C++,2,311,0.006430868167202572
+Chhattisgarh,Customer Support / BPO,14,311,0.04501607717041801
+Chhattisgarh,Cybersecurity,3,311,0.00964630225080386
+Chhattisgarh,Data Science & Analytics,7,311,0.022508038585209004
+Chhattisgarh,ERP & CRM,7,311,0.022508038585209004
+Chhattisgarh,Excel,6,311,0.01929260450160772
+Chhattisgarh,Finance & Accounting,28,311,0.09003215434083602
+Chhattisgarh,Frontend Frameworks,2,311,0.006430868167202572
+Chhattisgarh,Human Resources (HR) & Recruitment,12,311,0.03858520900321544
+Chhattisgarh,Industrial & Manufacturing,20,311,0.06430868167202572
+Chhattisgarh,JavaScript,1,311,0.003215434083601286
+Chhattisgarh,Machine Learning & AI,2,311,0.006430868167202572
+Chhattisgarh,Marketing & SEO,38,311,0.12218649517684887
+Chhattisgarh,Project & Product Management,4,311,0.012861736334405145
+Chhattisgarh,SAP,14,311,0.04501607717041801
+Chhattisgarh,SQL / Relational DBs,1,311,0.003215434083601286
+Chhattisgarh,Sales & Business Development,73,311,0.2347266881028939
+Chhattisgarh,Soft Skills (Communication/Leadership),53,311,0.17041800643086816
+Chhattisgarh,Software Testing / QA,4,311,0.012861736334405145
+Chhattisgarh,Supply Chain & Logistics,16,311,0.05144694533762058
+Delhi,Agile & Scrum,3,1932,0.0015527950310559005
+Delhi,Backend Frameworks,10,1932,0.005175983436853002
+Delhi,Business Analysis,7,1932,0.0036231884057971015
+Delhi,Business Intelligence (BI),17,1932,0.008799171842650104
+Delhi,C# / .NET,3,1932,0.0015527950310559005
+Delhi,Cloud Computing (AWS/GCP/Azure),17,1932,0.008799171842650104
+Delhi,Customer Support / BPO,349,1932,0.18064182194616976
+Delhi,Cybersecurity,6,1932,0.003105590062111801
+Delhi,Data Engineering (ETL/Big Data),2,1932,0.0010351966873706005
+Delhi,Data Science & Analytics,30,1932,0.015527950310559006
+Delhi,DevOps & CI/CD,11,1932,0.005693581780538302
+Delhi,ERP & CRM,26,1932,0.013457556935817806
+Delhi,Excel,11,1932,0.005693581780538302
+Delhi,Finance & Accounting,131,1932,0.06780538302277432
+Delhi,Frontend Frameworks,13,1932,0.006728778467908903
+Delhi,Git / Version Control,5,1932,0.002587991718426501
+Delhi,Human Resources (HR) & Recruitment,124,1932,0.06418219461697723
+Delhi,Industrial & Manufacturing,96,1932,0.049689440993788817
+Delhi,Java,4,1932,0.002070393374741201
+Delhi,JavaScript,10,1932,0.005175983436853002
+Delhi,Machine Learning & AI,8,1932,0.004140786749482402
+Delhi,Marketing & SEO,174,1932,0.09006211180124224
+Delhi,Mobile App Development,3,1932,0.0015527950310559005
+Delhi,Project & Product Management,8,1932,0.004140786749482402
+Delhi,Python,8,1932,0.004140786749482402
+Delhi,SAP,2,1932,0.0010351966873706005
+Delhi,SQL / Relational DBs,10,1932,0.005175983436853002
+Delhi,Sales & Business Development,611,1932,0.3162525879917184
+Delhi,Soft Skills (Communication/Leadership),168,1932,0.08695652173913043
+Delhi,Software Testing / QA,23,1932,0.011904761904761904
+Delhi,Supply Chain & Logistics,42,1932,0.021739130434782608
+Gujarat,Agile & Scrum,50,6226,0.008030838419530999
+Gujarat,Backend Frameworks,41,6226,0.006585287504015419
+Gujarat,Business Analysis,93,6226,0.014937359460327659
+Gujarat,Business Intelligence (BI),31,6226,0.004979119820109219
+Gujarat,C# / .NET,11,6226,0.0017667844522968198
+Gujarat,C/C++,30,6226,0.004818503051718599
+Gujarat,Cloud Computing (AWS/GCP/Azure),83,6226,0.013331191776421458
+Gujarat,Customer Support / BPO,350,6226,0.05621586893671699
+Gujarat,Cybersecurity,75,6226,0.012046257629296498
+Gujarat,Data Engineering (ETL/Big Data),19,6226,0.0030517185994217797
+Gujarat,Data Science & Analytics,160,6226,0.025698682942499197
+Gujarat,DevOps & CI/CD,55,6226,0.0088339222614841
+Gujarat,ERP & CRM,190,6226,0.030517185994217797
+Gujarat,Excel,122,6226,0.019595245743655638
+Gujarat,Finance & Accounting,421,6226,0.06761965949245101
+Gujarat,Frontend Frameworks,104,6226,0.016704143912624477
+Gujarat,Git / Version Control,49,6226,0.00787022165114038
+Gujarat,Human Resources (HR) & Recruitment,338,6226,0.054288467716029555
+Gujarat,Industrial & Manufacturing,404,6226,0.06488917442981047
+Gujarat,Java,46,6226,0.007388371345968519
+Gujarat,JavaScript,81,6226,0.013009958239640218
+Gujarat,Machine Learning & AI,61,6226,0.009797622871827819
+Gujarat,Marketing & SEO,431,6226,0.06922582717635721
+Gujarat,Mobile App Development,31,6226,0.004979119820109219
+Gujarat,NoSQL DBs,23,6226,0.0036941856729842595
+Gujarat,Project & Product Management,171,6226,0.027465467394796016
+Gujarat,Python,55,6226,0.0088339222614841
+Gujarat,SAP,198,6226,0.03180212014134275
+Gujarat,SQL / Relational DBs,119,6226,0.01911339543848378
+Gujarat,Sales & Business Development,1112,6226,0.17860584645036942
+Gujarat,Soft Skills (Communication/Leadership),969,6226,0.15563764857051077
+Gujarat,Software Testing / QA,108,6226,0.017346610986186957
+Gujarat,Supply Chain & Logistics,195,6226,0.031320269836170894
+Haryana,Agile & Scrum,171,9755,0.01752947206560738
+Haryana,Backend Frameworks,78,9755,0.007995899538698104
+Haryana,Business Analysis,204,9755,0.020912352639671963
+Haryana,Business Intelligence (BI),112,9755,0.011481291645310098
+Haryana,C# / .NET,35,9755,0.0035879036391594054
+Haryana,C/C++,82,9755,0.00840594566888775
+Haryana,Cloud Computing (AWS/GCP/Azure),270,9755,0.027678113787801127
+Haryana,Customer Support / BPO,818,9755,0.08385443362378267
+Haryana,Cybersecurity,200,9755,0.020502306509482315
+Haryana,Data Engineering (ETL/Big Data),124,9755,0.012711430035879037
+Haryana,Data Science & Analytics,413,9755,0.04233726294208098
+Haryana,DevOps & CI/CD,185,9755,0.018964633521271142
+Haryana,ERP & CRM,231,9755,0.023680164018452077
+Haryana,Excel,182,9755,0.01865709892362891
+Haryana,Finance & Accounting,631,9755,0.06468477703741671
+Haryana,Frontend Frameworks,235,9755,0.02409021014864172
+Haryana,Git / Version Control,60,9755,0.006150691952844695
+Haryana,Human Resources (HR) & Recruitment,394,9755,0.040389543823680166
+Haryana,Industrial & Manufacturing,343,9755,0.03516145566376217
+Haryana,Java,145,9755,0.01486417221937468
+Haryana,JavaScript,149,9755,0.015274218349564326
+Haryana,Machine Learning & AI,128,9755,0.013121476166068683
+Haryana,Marketing & SEO,458,9755,0.046950281906714506
+Haryana,Mobile App Development,81,9755,0.008303434136340338
+Haryana,NoSQL DBs,32,9755,0.0032803690415171708
+Haryana,Project & Product Management,478,9755,0.04900051255766274
+Haryana,Python,344,9755,0.03526396719630959
+Haryana,SAP,214,9755,0.02193746796514608
+Haryana,SQL / Relational DBs,378,9755,0.03874935930292158
+Haryana,Sales & Business Development,1102,9755,0.11296770886724757
+Haryana,Soft Skills (Communication/Leadership),980,9755,0.10046130189646335
+Haryana,Software Testing / QA,229,9755,0.023475140953357253
+Haryana,Supply Chain & Logistics,269,9755,0.027575602255253715
+Jharkhand,Backend Frameworks,1,193,0.0051813471502590676
+Jharkhand,Business Analysis,2,193,0.010362694300518135
+Jharkhand,C# / .NET,1,193,0.0051813471502590676
+Jharkhand,Customer Support / BPO,9,193,0.046632124352331605
+Jharkhand,Cybersecurity,3,193,0.015544041450777202
+Jharkhand,Data Science & Analytics,3,193,0.015544041450777202
+Jharkhand,DevOps & CI/CD,1,193,0.0051813471502590676
+Jharkhand,ERP & CRM,2,193,0.010362694300518135
+Jharkhand,Excel,3,193,0.015544041450777202
+Jharkhand,Finance & Accounting,9,193,0.046632124352331605
+Jharkhand,Frontend Frameworks,2,193,0.010362694300518135
+Jharkhand,Git / Version Control,1,193,0.0051813471502590676
+Jharkhand,Human Resources (HR) & Recruitment,12,193,0.06217616580310881
+Jharkhand,Industrial & Manufacturing,11,193,0.05699481865284974
+Jharkhand,JavaScript,1,193,0.0051813471502590676
+Jharkhand,Marketing & SEO,17,193,0.08808290155440414
+Jharkhand,Project & Product Management,7,193,0.03626943005181347
+Jharkhand,SAP,11,193,0.05699481865284974
+Jharkhand,SQL / Relational DBs,2,193,0.010362694300518135
+Jharkhand,Sales & Business Development,46,193,0.23834196891191708
+Jharkhand,Soft Skills (Communication/Leadership),41,193,0.21243523316062177
+Jharkhand,Software Testing / QA,2,193,0.010362694300518135
+Jharkhand,Supply Chain & Logistics,6,193,0.031088082901554404
+Karnataka,Agile & Scrum,1407,56137,0.025063683488608227
+Karnataka,Backend Frameworks,682,56137,0.012148850134492403
+Karnataka,Business Analysis,824,56137,0.014678376115574399
+Karnataka,Business Intelligence (BI),619,56137,0.011026595649927855
+Karnataka,C# / .NET,298,56137,0.00530844184762278
+Karnataka,C/C++,891,56137,0.015871884853127172
+Karnataka,Cloud Computing (AWS/GCP/Azure),2779,56137,0.04950389226356948
+Karnataka,Customer Support / BPO,2720,56137,0.04845289203199316
+Karnataka,Cybersecurity,989,56137,0.01761761405133869
+Karnataka,Data Engineering (ETL/Big Data),963,56137,0.017154461406915227
+Karnataka,Data Science & Analytics,2158,56137,0.038441669487147515
+Karnataka,DevOps & CI/CD,2282,56137,0.04065055132978249
+Karnataka,ERP & CRM,1627,56137,0.028982667402960613
+Karnataka,Excel,358,56137,0.006377255642446159
+Karnataka,Finance & Accounting,2140,56137,0.0381210253487005
+Karnataka,Frontend Frameworks,2739,56137,0.04879134973368723
+Karnataka,Git / Version Control,727,56137,0.012950460480609936
+Karnataka,Human Resources (HR) & Recruitment,1748,56137,0.031138108555854426
+Karnataka,Industrial & Manufacturing,1551,56137,0.027628836596184335
+Karnataka,Java,2282,56137,0.04065055132978249
+Karnataka,JavaScript,1749,56137,0.031155922119101485
+Karnataka,Machine Learning & AI,1143,56137,0.02036090279138536
+Karnataka,Marketing & SEO,1381,56137,0.024600530844184763
+Karnataka,Mobile App Development,917,56137,0.016335037497550636
+Karnataka,NoSQL DBs,231,56137,0.004114933110070007
+Karnataka,Project & Product Management,2380,56137,0.04239628052799402
+Karnataka,Python,2424,56137,0.04318007731086449
+Karnataka,SAP,2745,56137,0.048898231113169564
+Karnataka,SQL / Relational DBs,3251,56137,0.05791189411618006
+Karnataka,Sales & Business Development,4122,56137,0.07342750770436611
+Karnataka,Soft Skills (Communication/Leadership),2828,56137,0.05037675686267524
+Karnataka,Software Testing / QA,2070,56137,0.03687407592140656
+Karnataka,Supply Chain & Logistics,1112,56137,0.019808682330726614
+Kerala,Agile & Scrum,20,1792,0.011160714285714286
+Kerala,Backend Frameworks,17,1792,0.009486607142857142
+Kerala,Business Analysis,19,1792,0.010602678571428572
+Kerala,Business Intelligence (BI),10,1792,0.005580357142857143
+Kerala,C# / .NET,16,1792,0.008928571428571428
+Kerala,C/C++,11,1792,0.006138392857142857
+Kerala,Cloud Computing (AWS/GCP/Azure),59,1792,0.032924107142857144
+Kerala,Customer Support / BPO,83,1792,0.04631696428571429
+Kerala,Cybersecurity,26,1792,0.014508928571428572
+Kerala,Data Engineering (ETL/Big Data),23,1792,0.012834821428571428
+Kerala,Data Science & Analytics,44,1792,0.024553571428571428
+Kerala,DevOps & CI/CD,66,1792,0.036830357142857144
+Kerala,ERP & CRM,42,1792,0.0234375
+Kerala,Excel,22,1792,0.012276785714285714
+Kerala,Finance & Accounting,84,1792,0.046875
+Kerala,Frontend Frameworks,59,1792,0.032924107142857144
+Kerala,Git / Version Control,30,1792,0.016741071428571428
+Kerala,Human Resources (HR) & Recruitment,75,1792,0.04185267857142857
+Kerala,Industrial & Manufacturing,41,1792,0.022879464285714284
+Kerala,Java,44,1792,0.024553571428571428
+Kerala,JavaScript,45,1792,0.025111607142857144
+Kerala,Machine Learning & AI,20,1792,0.011160714285714286
+Kerala,Marketing & SEO,97,1792,0.05412946428571429
+Kerala,Mobile App Development,17,1792,0.009486607142857142
+Kerala,NoSQL DBs,6,1792,0.0033482142857142855
+Kerala,Project & Product Management,49,1792,0.02734375
+Kerala,Python,50,1792,0.027901785714285716
+Kerala,SAP,26,1792,0.014508928571428572
+Kerala,SQL / Relational DBs,79,1792,0.04408482142857143
+Kerala,Sales & Business Development,284,1792,0.15848214285714285
+Kerala,Soft Skills (Communication/Leadership),241,1792,0.13448660714285715
+Kerala,Software Testing / QA,53,1792,0.029575892857142856
+Kerala,Supply Chain & Logistics,34,1792,0.018973214285714284
+Madhya Pradesh,Backend Frameworks,1,80,0.0125
+Madhya Pradesh,Customer Support / BPO,3,80,0.0375
+Madhya Pradesh,Data Engineering (ETL/Big Data),1,80,0.0125
+Madhya Pradesh,DevOps & CI/CD,2,80,0.025
+Madhya Pradesh,Finance & Accounting,5,80,0.0625
+Madhya Pradesh,Frontend Frameworks,1,80,0.0125
+Madhya Pradesh,Human Resources (HR) & Recruitment,1,80,0.0125
+Madhya Pradesh,Industrial & Manufacturing,5,80,0.0625
+Madhya Pradesh,Java,2,80,0.025
+Madhya Pradesh,JavaScript,1,80,0.0125
+Madhya Pradesh,Marketing & SEO,4,80,0.05
+Madhya Pradesh,Project & Product Management,3,80,0.0375
+Madhya Pradesh,Python,1,80,0.0125
+Madhya Pradesh,SAP,3,80,0.0375
+Madhya Pradesh,Sales & Business Development,31,80,0.3875
+Madhya Pradesh,Soft Skills (Communication/Leadership),11,80,0.1375
+Madhya Pradesh,Software Testing / QA,2,80,0.025
+Madhya Pradesh,Supply Chain & Logistics,3,80,0.0375
+Maharashtra,Agile & Scrum,736,37948,0.019394961526299145
+Maharashtra,Backend Frameworks,321,37948,0.008458943817856014
+Maharashtra,Business Analysis,707,37948,0.01863075787920312
+Maharashtra,Business Intelligence (BI),293,37948,0.00772109202065985
+Maharashtra,C# / .NET,139,37948,0.003662907136080953
+Maharashtra,C/C++,394,37948,0.01038262886054601
+Maharashtra,Cloud Computing (AWS/GCP/Azure),1290,37948,0.033993886370823234
+Maharashtra,Customer Support / BPO,2538,37948,0.06688099504585222
+Maharashtra,Cybersecurity,731,37948,0.01926320227679983
+Maharashtra,Data Engineering (ETL/Big Data),453,37948,0.011937388004637926
+Maharashtra,Data Science & Analytics,1335,37948,0.035179719616317065
+Maharashtra,DevOps & CI/CD,1000,37948,0.02635184989986297
+Maharashtra,ERP & CRM,1085,37948,0.028591757141351322
+Maharashtra,Excel,420,37948,0.011067776957942447
+Maharashtra,Finance & Accounting,2022,37948,0.05328344049752293
+Maharashtra,Frontend Frameworks,1362,37948,0.035891219563613366
+Maharashtra,Git / Version Control,363,37948,0.009565721513650259
+Maharashtra,Human Resources (HR) & Recruitment,1311,37948,0.03454727521872036
+Maharashtra,Industrial & Manufacturing,1586,37948,0.04179403394118267
+Maharashtra,Java,1024,37948,0.02698429429745968
+Maharashtra,JavaScript,828,37948,0.02181933171708654
+Maharashtra,Machine Learning & AI,418,37948,0.011015073258142721
+Maharashtra,Marketing & SEO,1720,37948,0.04532518182776431
+Maharashtra,Mobile App Development,482,37948,0.012701591651733951
+Maharashtra,NoSQL DBs,120,37948,0.0031622219879835563
+Maharashtra,Project & Product Management,1790,37948,0.04716981132075472
+Maharashtra,Python,1155,37948,0.03043638663434173
+Maharashtra,SAP,1284,37948,0.033835775271424055
+Maharashtra,SQL / Relational DBs,1678,37948,0.04421840413197006
+Maharashtra,Sales & Business Development,4081,37948,0.10754189944134078
+Maharashtra,Soft Skills (Communication/Leadership),3236,37948,0.08527458627595658
+Maharashtra,Software Testing / QA,1050,37948,0.02766944239485612
+Maharashtra,Supply Chain & Logistics,996,37948,0.02624644250026352
+Odisha,Cloud Computing (AWS/GCP/Azure),1,48,0.020833333333333332
+Odisha,Customer Support / BPO,3,48,0.0625
+Odisha,Cybersecurity,2,48,0.041666666666666664
+Odisha,Data Science & Analytics,2,48,0.041666666666666664
+Odisha,Finance & Accounting,2,48,0.041666666666666664
+Odisha,Frontend Frameworks,1,48,0.020833333333333332
+Odisha,Human Resources (HR) & Recruitment,4,48,0.08333333333333333
+Odisha,Industrial & Manufacturing,6,48,0.125
+Odisha,Marketing & SEO,2,48,0.041666666666666664
+Odisha,SAP,1,48,0.020833333333333332
+Odisha,SQL / Relational DBs,5,48,0.10416666666666667
+Odisha,Sales & Business Development,13,48,0.2708333333333333
+Odisha,Soft Skills (Communication/Leadership),5,48,0.10416666666666667
+Odisha,Supply Chain & Logistics,1,48,0.020833333333333332
+Punjab,Backend Frameworks,1,490,0.0020408163265306124
+Punjab,Business Analysis,6,490,0.012244897959183673
+Punjab,Business Intelligence (BI),1,490,0.0020408163265306124
+Punjab,C/C++,2,490,0.004081632653061225
+Punjab,Cloud Computing (AWS/GCP/Azure),2,490,0.004081632653061225
+Punjab,Customer Support / BPO,28,490,0.05714285714285714
+Punjab,Cybersecurity,8,490,0.0163265306122449
+Punjab,Data Science & Analytics,9,490,0.018367346938775512
+Punjab,DevOps & CI/CD,1,490,0.0020408163265306124
+Punjab,ERP & CRM,6,490,0.012244897959183673
+Punjab,Excel,10,490,0.02040816326530612
+Punjab,Finance & Accounting,32,490,0.0653061224489796
+Punjab,Frontend Frameworks,2,490,0.004081632653061225
+Punjab,Human Resources (HR) & Recruitment,26,490,0.053061224489795916
+Punjab,Industrial & Manufacturing,36,490,0.07346938775510205
+Punjab,Java,1,490,0.0020408163265306124
+Punjab,JavaScript,3,490,0.006122448979591836
+Punjab,Machine Learning & AI,2,490,0.004081632653061225
+Punjab,Marketing & SEO,54,490,0.11020408163265306
+Punjab,Mobile App Development,2,490,0.004081632653061225
+Punjab,Project & Product Management,8,490,0.0163265306122449
+Punjab,SAP,13,490,0.026530612244897958
+Punjab,SQL / Relational DBs,1,490,0.0020408163265306124
+Punjab,Sales & Business Development,126,490,0.2571428571428571
+Punjab,Soft Skills (Communication/Leadership),94,490,0.19183673469387755
+Punjab,Software Testing / QA,5,490,0.01020408163265306
+Punjab,Supply Chain & Logistics,11,490,0.022448979591836733
+Rajasthan,Agile & Scrum,9,1557,0.005780346820809248
+Rajasthan,Backend Frameworks,9,1557,0.005780346820809248
+Rajasthan,Business Analysis,11,1557,0.007064868336544637
+Rajasthan,Business Intelligence (BI),5,1557,0.0032113037893384713
+Rajasthan,C# / .NET,5,1557,0.0032113037893384713
+Rajasthan,C/C++,4,1557,0.002569043031470777
+Rajasthan,Cloud Computing (AWS/GCP/Azure),20,1557,0.012845215157353885
+Rajasthan,Customer Support / BPO,122,1557,0.0783558124598587
+Rajasthan,Cybersecurity,20,1557,0.012845215157353885
+Rajasthan,Data Engineering (ETL/Big Data),3,1557,0.0019267822736030828
+Rajasthan,Data Science & Analytics,28,1557,0.01798330122029544
+Rajasthan,DevOps & CI/CD,7,1557,0.00449582530507386
+Rajasthan,ERP & CRM,34,1557,0.021836865767501604
+Rajasthan,Excel,24,1557,0.015414258188824663
+Rajasthan,Finance & Accounting,158,1557,0.1014771997430957
+Rajasthan,Frontend Frameworks,25,1557,0.01605651894669236
+Rajasthan,Git / Version Control,5,1557,0.0032113037893384713
+Rajasthan,Human Resources (HR) & Recruitment,90,1557,0.057803468208092484
+Rajasthan,Industrial & Manufacturing,37,1557,0.023763648041104687
+Rajasthan,Java,5,1557,0.0032113037893384713
+Rajasthan,JavaScript,17,1557,0.010918432883750802
+Rajasthan,Machine Learning & AI,9,1557,0.005780346820809248
+Rajasthan,Marketing & SEO,116,1557,0.07450224791265253
+Rajasthan,Mobile App Development,10,1557,0.006422607578676943
+Rajasthan,NoSQL DBs,2,1557,0.0012845215157353885
+Rajasthan,Project & Product Management,32,1557,0.020552344251766216
+Rajasthan,Python,13,1557,0.008349389852280027
+Rajasthan,SAP,44,1557,0.028259473346178548
+Rajasthan,SQL / Relational DBs,19,1557,0.012202954399486191
+Rajasthan,Sales & Business Development,321,1557,0.20616570327552985
+Rajasthan,Soft Skills (Communication/Leadership),265,1557,0.170199100834939
+Rajasthan,Software Testing / QA,16,1557,0.010276172125883108
+Rajasthan,Supply Chain & Logistics,72,1557,0.046242774566473986
+Tamil Nadu,Agile & Scrum,245,12618,0.019416706292597875
+Tamil Nadu,Backend Frameworks,125,12618,0.009906482802345856
+Tamil Nadu,Business Analysis,167,12618,0.013235061023934062
+Tamil Nadu,Business Intelligence (BI),111,12618,0.00879695672848312
+Tamil Nadu,C# / .NET,56,12618,0.004438104295450943
+Tamil Nadu,C/C++,132,12618,0.010461245839277223
+Tamil Nadu,Cloud Computing (AWS/GCP/Azure),400,12618,0.03170074496750674
+Tamil Nadu,Customer Support / BPO,894,12618,0.07085116500237755
+Tamil Nadu,Cybersecurity,190,12618,0.0150578538595657
+Tamil Nadu,Data Engineering (ETL/Big Data),165,12618,0.01307655729909653
+Tamil Nadu,Data Science & Analytics,328,12618,0.025994610873355525
+Tamil Nadu,DevOps & CI/CD,359,12618,0.028451418608337296
+Tamil Nadu,ERP & CRM,309,12618,0.024488825487398953
+Tamil Nadu,Excel,120,12618,0.009510223490252021
+Tamil Nadu,Finance & Accounting,664,12618,0.05262323664606118
+Tamil Nadu,Frontend Frameworks,461,12618,0.03653510857505152
+Tamil Nadu,Git / Version Control,124,12618,0.009827230939927089
+Tamil Nadu,Human Resources (HR) & Recruitment,517,12618,0.04097321287050246
+Tamil Nadu,Industrial & Manufacturing,574,12618,0.04549056902837217
+Tamil Nadu,Java,396,12618,0.03138373751783167
+Tamil Nadu,JavaScript,323,12618,0.025598351561261688
+Tamil Nadu,Machine Learning & AI,180,12618,0.014265335235378032
+Tamil Nadu,Marketing & SEO,472,12618,0.03740687906165795
+Tamil Nadu,Mobile App Development,167,12618,0.013235061023934062
+Tamil Nadu,NoSQL DBs,33,12618,0.002615311459819306
+Tamil Nadu,Project & Product Management,463,12618,0.036693612299889045
+Tamil Nadu,Python,413,12618,0.03273101917895071
+Tamil Nadu,SAP,356,12618,0.028213663021080995
+Tamil Nadu,SQL / Relational DBs,525,12618,0.041607227769852595
+Tamil Nadu,Sales & Business Development,1419,12618,0.11245839277223015
+Tamil Nadu,Soft Skills (Communication/Leadership),1234,12618,0.09779679822475829
+Tamil Nadu,Software Testing / QA,363,12618,0.028768426058012362
+Tamil Nadu,Supply Chain & Logistics,333,12618,0.026390870185449358
+Telangana,Agile & Scrum,566,20709,0.02733111207687479
+Telangana,Backend Frameworks,172,20709,0.008305567627601526
+Telangana,Business Analysis,321,20709,0.015500507025930754
+Telangana,Business Intelligence (BI),256,20709,0.01236177507363948
+Telangana,C# / .NET,96,20709,0.004635665652614805
+Telangana,C/C++,268,20709,0.012941233280216331
+Telangana,Cloud Computing (AWS/GCP/Azure),988,20709,0.04770872567482737
+Telangana,Customer Support / BPO,921,20709,0.04447341735477329
+Telangana,Cybersecurity,377,20709,0.01820464532328939
+Telangana,Data Engineering (ETL/Big Data),373,20709,0.018011492587763776
+Telangana,Data Science & Analytics,819,20709,0.03954802259887006
+Telangana,DevOps & CI/CD,686,20709,0.0331256941426433
+Telangana,ERP & CRM,604,20709,0.02916606306436815
+Telangana,Excel,181,20709,0.008740161282534164
+Telangana,Finance & Accounting,728,20709,0.03515379786566227
+Telangana,Frontend Frameworks,958,20709,0.046260080158385244
+Telangana,Git / Version Control,282,20709,0.01361726785455599
+Telangana,Human Resources (HR) & Recruitment,766,20709,0.03698874885315563
+Telangana,Industrial & Manufacturing,571,20709,0.02757255299628181
+Telangana,Java,644,20709,0.03109759041962432
+Telangana,JavaScript,599,20709,0.028924622144961127
+Telangana,Machine Learning & AI,334,20709,0.01612825341638901
+Telangana,Marketing & SEO,579,20709,0.027958858467333043
+Telangana,Mobile App Development,370,20709,0.01786662803611956
+Telangana,NoSQL DBs,65,20709,0.003138731952291274
+Telangana,Project & Product Management,1008,20709,0.048674489352455455
+Telangana,Python,842,20709,0.04065865082814235
+Telangana,SAP,1121,20709,0.05413105413105413
+Telangana,SQL / Relational DBs,1216,20709,0.058718431599787534
+Telangana,Sales & Business Development,1438,20709,0.06943840842145926
+Telangana,Soft Skills (Communication/Leadership),1361,20709,0.06572021826259114
+Telangana,Software Testing / QA,792,20709,0.03824424163407214
+Telangana,Supply Chain & Logistics,407,20709,0.019653290839731517
+Uttar Pradesh,Agile & Scrum,114,10124,0.01126037139470565
+Uttar Pradesh,Backend Frameworks,100,10124,0.009877518767285659
+Uttar Pradesh,Business Analysis,123,10124,0.01214934808376136
+Uttar Pradesh,Business Intelligence (BI),65,10124,0.006420387198735678
+Uttar Pradesh,C# / .NET,35,10124,0.00345713156854998
+Uttar Pradesh,C/C++,62,10124,0.0061240616357171075
+Uttar Pradesh,Cloud Computing (AWS/GCP/Azure),249,10124,0.02459502173054129
+Uttar Pradesh,Customer Support / BPO,1077,10124,0.10638087712366653
+Uttar Pradesh,Cybersecurity,134,10124,0.013235875148162782
+Uttar Pradesh,Data Engineering (ETL/Big Data),71,10124,0.007013038324772817
+Uttar Pradesh,Data Science & Analytics,255,10124,0.025187672856578427
+Uttar Pradesh,DevOps & CI/CD,210,10124,0.02074278941129988
+Uttar Pradesh,ERP & CRM,236,10124,0.023310944290794153
+Uttar Pradesh,Excel,153,10124,0.015112603713947056
+Uttar Pradesh,Finance & Accounting,480,10124,0.047412090082971155
+Uttar Pradesh,Frontend Frameworks,258,10124,0.025483998419596997
+Uttar Pradesh,Git / Version Control,88,10124,0.00869221651521138
+Uttar Pradesh,Human Resources (HR) & Recruitment,462,10124,0.04563413670485974
+Uttar Pradesh,Industrial & Manufacturing,329,10124,0.032497036744369816
+Uttar Pradesh,Java,188,10124,0.018569735282497037
+Uttar Pradesh,JavaScript,204,10124,0.020150138285262742
+Uttar Pradesh,Machine Learning & AI,130,10124,0.012840774397471355
+Uttar Pradesh,Marketing & SEO,663,10124,0.06548794942710391
+Uttar Pradesh,Mobile App Development,67,10124,0.006617937574081391
+Uttar Pradesh,NoSQL DBs,18,10124,0.0017779533781114183
+Uttar Pradesh,Project & Product Management,240,10124,0.023706045041485577
+Uttar Pradesh,Python,199,10124,0.01965626234689846
+Uttar Pradesh,SAP,144,10124,0.014223627024891347
+Uttar Pradesh,SQL / Relational DBs,304,10124,0.0300276570525484
+Uttar Pradesh,Sales & Business Development,1730,10124,0.17088107467404187
+Uttar Pradesh,Soft Skills (Communication/Leadership),1269,10124,0.125345713156855
+Uttar Pradesh,Software Testing / QA,265,10124,0.026175424733306994
+Uttar Pradesh,Supply Chain & Logistics,202,10124,0.019952587909917028
+Uttarakhand,Customer Support / BPO,1,18,0.05555555555555555
+Uttarakhand,Finance & Accounting,1,18,0.05555555555555555
+Uttarakhand,Industrial & Manufacturing,1,18,0.05555555555555555
+Uttarakhand,Marketing & SEO,1,18,0.05555555555555555
+Uttarakhand,SAP,1,18,0.05555555555555555
+Uttarakhand,Sales & Business Development,10,18,0.5555555555555556
+Uttarakhand,Soft Skills (Communication/Leadership),2,18,0.1111111111111111
+Uttarakhand,Software Testing / QA,1,18,0.05555555555555555
+West Bengal,Agile & Scrum,39,2478,0.015738498789346248
+West Bengal,Backend Frameworks,15,2478,0.006053268765133172
+West Bengal,Business Analysis,31,2478,0.012510088781275222
+West Bengal,Business Intelligence (BI),17,2478,0.006860371267150928
+West Bengal,C# / .NET,4,2478,0.0016142050040355124
+West Bengal,C/C++,13,2478,0.005246166263115416
+West Bengal,Cloud Computing (AWS/GCP/Azure),57,2478,0.023002421307506054
+West Bengal,Customer Support / BPO,225,2478,0.09079903147699758
+West Bengal,Cybersecurity,33,2478,0.013317191283292978
+West Bengal,Data Engineering (ETL/Big Data),16,2478,0.00645682001614205
+West Bengal,Data Science & Analytics,63,2478,0.025423728813559324
+West Bengal,DevOps & CI/CD,32,2478,0.0129136400322841
+West Bengal,ERP & CRM,62,2478,0.025020177562550445
+West Bengal,Excel,51,2478,0.020581113801452784
+West Bengal,Finance & Accounting,134,2478,0.05407586763518967
+West Bengal,Frontend Frameworks,50,2478,0.020177562550443905
+West Bengal,Git / Version Control,9,2478,0.0036319612590799033
+West Bengal,Human Resources (HR) & Recruitment,102,2478,0.04116222760290557
+West Bengal,Industrial & Manufacturing,84,2478,0.03389830508474576
+West Bengal,Java,33,2478,0.013317191283292978
+West Bengal,JavaScript,26,2478,0.010492332526230832
+West Bengal,Machine Learning & AI,19,2478,0.007667473769168685
+West Bengal,Marketing & SEO,137,2478,0.055286521388216305
+West Bengal,Mobile App Development,32,2478,0.0129136400322841
+West Bengal,Project & Product Management,85,2478,0.03430185633575464
+West Bengal,Python,34,2478,0.013720742534301856
+West Bengal,SAP,104,2478,0.041969330104923326
+West Bengal,SQL / Relational DBs,94,2478,0.037933817594834544
+West Bengal,Sales & Business Development,390,2478,0.15738498789346247
+West Bengal,Soft Skills (Communication/Leadership),365,2478,0.14729620661824053
+West Bengal,Software Testing / QA,46,2478,0.018563357546408393
+West Bengal,Supply Chain & Logistics,76,2478,0.03066989507667474

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv
+env/
+.ipynb_checkpoints/
+data/indian-job-market-dataset-2025.xlsx
+data/naukri_com-job_sample.csv
+data/combined_job_postings.csv
+data/naukri_mapped.csv
+*.pdf
