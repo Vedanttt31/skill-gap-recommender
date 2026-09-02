@@ -32,59 +32,74 @@ st.set_page_config(
 
 # --- Animated Background ---
 def render_background():
-    render_html("""
-<iframe id='vanta-bg-iframe' srcdoc='<!DOCTYPE html>
-<html>
-<head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-    <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0E1117; }
-        #vanta-bg { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1; }
-        .overlay { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; background: rgba(14, 17, 23, 0.6); z-index: 1; pointer-events: none; }
-    </style>
-</head>
-<body>
-    <div id="vanta-bg"></div>
-    <div class="overlay"></div>
-    <script>
-        VANTA.NET({
-            el: "#vanta-bg",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x00d2ff,
-            backgroundColor: 0x0e1117,
-            points: 12.00,
-            maxDistance: 22.00,
-            spacing: 18.00,
-            showDots: true
-        });
-        try {
-            if (window.parent && window.parent.document) {
-                window.parent.document.addEventListener(&#39;mousemove&#39;, (e) => {
-                    const event = new MouseEvent(&#39;mousemove&#39;, {
-                        clientX: e.clientX,
-                        clientY: e.clientY
+    html_code = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+        <style>
+            body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0E1117; }
+            #vanta-bg { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1; }
+            .overlay { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; background: rgba(14, 17, 23, 0.7); z-index: 1; pointer-events: none; }
+        </style>
+    </head>
+    <body>
+        <div id="vanta-bg"></div>
+        <div class="overlay"></div>
+        <script>
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x00d2ff,
+                backgroundColor: 0x0e1117,
+                points: 10.00,
+                maxDistance: 20.00,
+                spacing: 15.00,
+                showDots: true
+            });
+            // Proxy mouse events from parent to enable parallax if same-origin allows it
+            try {
+                if (window.parent && window.parent.document) {
+                    window.parent.document.addEventListener('mousemove', (e) => {
+                        window.dispatchEvent(new MouseEvent('mousemove', {
+                            clientX: e.clientX, clientY: e.clientY
+                        }));
                     });
-                    window.dispatchEvent(event);
-                });
-            }
-        } catch(e) {
-            console.log("Mouse proxy failed:", e);
-        }
-    </script>
-</body>
-</html>' style='position:fixed; top:0; left:0; width:100vw; height:100vh; border:none; z-index:-999; pointer-events:none;'></iframe>
-<style>
-.stApp > header { background-color: transparent !important; }
-.stApp { background-color: transparent !important; }
-</style>
-    """)
+                }
+            } catch(e) {}
+        </script>
+    </body>
+    </html>
+    """
+    
+    # Render component with height 0 so it doesn't displace content
+    components.html(html_code, height=0, width=0)
+    
+    # Inject CSS to make the component's iframe act as a fixed background
+    st.markdown("""
+    <style>
+    .stApp > header { background-color: transparent !important; }
+    .stApp { background-color: transparent !important; }
+    /* Target the zero-height iframe wrapper Streamlit creates and stretch it behind everything */
+    iframe[height="0"] {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: -999 !important;
+        border: none !important;
+        pointer-events: none !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 render_background()
 
@@ -121,11 +136,8 @@ def load_data():
         india_geojson = None
         
     state_mapping = {
-        'Andaman & Nicobar Islands': 'Andaman & Nicobar Island',
-        'Arunachal Pradesh': 'Arunanchal Pradesh',
-        'Dadra & Nagar Haveli & Daman & Diu': 'Daman & Diu', 
-        'Delhi': 'NCT of Delhi',
-        'Jammu & Kashmir': 'Jammu & Kashmir',
+        'Andaman & Nicobar Islands': 'Andaman & Nicobar',
+        'Dadra & Nagar Haveli & Daman & Diu': 'Dadra and Nagar Haveli and Daman and Diu',
     }
     state_df['map_state'] = state_df['state'].replace(state_mapping)
         
@@ -756,7 +768,7 @@ elif st.session_state['active_page'] == "📊 Dashboard":
             featureidkey='properties.ST_NM', 
             locations='map_state', 
             color='UR',
-            color_continuous_scale="Teal",
+            color_continuous_scale="Reds",
             hover_name='state',
             hover_data={'map_state': False, 'UR': True}
         )
@@ -775,7 +787,7 @@ elif st.session_state['active_page'] == "📊 Dashboard":
     fig_bar = px.bar(
         top_skills.sort_values('demand_score', ascending=True), 
         x='demand_score', y='skill', orientation='h',
-        color='demand_score', color_continuous_scale="Teal"
+        color='demand_score', color_continuous_scale="Reds"
     )
     fig_bar.update_layout(height=450, margin={"r":0,"t":0,"l":0,"b":0}, paper_bgcolor="#0E1117", plot_bgcolor="#0E1117", font_color="#FFFFFF", showlegend=False, xaxis_title="Demand Score", yaxis_title="")
     st.plotly_chart(fig_bar, use_container_width=True)
