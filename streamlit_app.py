@@ -928,35 +928,117 @@ elif st.session_state['active_page'] == "Compare Skills":
         
     if skill_a and skill_b:
         st.divider()
+        
+        def get_metrics(skill):
+            mask = naukri_df['skills_str'].str.contains(skill, case=False, na=False)
+            matched = naukri_df[mask]
+            total_postings = len(matched)
+            
+            if total_postings == 0:
+                return {"postings": 0, "pct": 0.0, "states": [], "roles": [], "exp": None, "sal": None, "time": "N/A"}
+                
+            pct = (total_postings / len(naukri_df)) * 100
+            top_states = matched['state'].value_counts().head(3).index.tolist()
+            top_roles = matched['job_title'].value_counts().head(4).index.tolist()
+            avg_exp = matched['experience_num'].mean()
+            
+            sals = matched.dropna(subset=['mid_salary'])
+            sals = sals[sals['mid_salary'] > 0]
+            avg_sal = sals['mid_salary'].mean() if len(sals) >= 20 else None
+            
+            rd = get_roadmap_content(skill, "Maharashtra", 0.0, 0.0, "")
+            time = rd.get("est_time", "1-2 months")
+            
+            return {"postings": total_postings, "pct": pct, "states": top_states, "roles": top_roles, "exp": avg_exp, "sal": avg_sal, "time": time}
+            
+        def fmt_sal(val):
+            if val is None or pd.isna(val): return "Not enough data"
+            return f"₹{val/100000:.1f} LPA" if val >= 100000 else f"₹{val:,.0f}/yr"
+            
+        def fmt_exp(val):
+            if val is None or pd.isna(val): return "N/A"
+            return f"{val:.1f} yrs"
+            
+        mA = get_metrics(skill_a)
+        mB = get_metrics(skill_b)
+        
         c_res1, c_res2 = st.columns(2)
         
-        total_jobs = len(naukri_df)
-        
-        demand_a = skill_demand[skill_demand['skill'] == skill_a]['demand_score'].sum()
-        pct_a = (demand_a / total_jobs) * 100
-        states_a = skill_demand[skill_demand['skill'] == skill_a].sort_values('demand_score', ascending=False).head(3)['state'].tolist()
-        
-        demand_b = skill_demand[skill_demand['skill'] == skill_b]['demand_score'].sum()
-        pct_b = (demand_b / total_jobs) * 100
-        states_b = skill_demand[skill_demand['skill'] == skill_b].sort_values('demand_score', ascending=False).head(3)['state'].tolist()
-        
-        with c_res1:
-            with st.container(border=True):
-                st.write(f"### {skill_a.title()}")
-                st.metric("Total National Demand", f"{int(demand_a)} postings", help="Relative frequency of this skill in job postings nationwide.")
-                st.write(f"This skill appears in roughly **{pct_a:.1f}%** of all jobs.")
-                st.write("**Top States for this skill:**")
-                for s in states_a:
-                    st.caption(f"{s}")
+        for col, skill, m in [(c_res1, skill_a, mA), (c_res2, skill_b, mB)]:
+            with col:
+                st.markdown(f'''
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; height: 100%;">
+                    <div style="color: #FFFFFF; font-size: 1.6rem; font-weight: 700; margin-bottom: 20px;">{skill}</div>
                     
-        with c_res2:
-            with st.container(border=True):
-                st.write(f"### {skill_b.title()}")
-                st.metric("Total National Demand", f"{int(demand_b)} postings", help="Relative frequency of this skill in job postings nationwide.")
-                st.write(f"This skill appears in roughly **{pct_b:.1f}%** of all jobs.")
-                st.write("**Top States for this skill:**")
-                for s in states_b:
-                    st.caption(f"{s}")
+                    <div style="margin-bottom: 20px;">
+                        <div style="color: #A0AEC0; font-size: 0.9rem;">Total National Demand</div>
+                        <div style="font-size: 1.8rem; font-weight: 800; color: #00D2FF; line-height: 1.2;">{m['postings']:,} <span style="font-size: 1rem; color: #A0AEC0; font-weight: 400;">postings</span></div>
+                        <div style="color: #A0AEC0; font-size: 0.9rem; margin-top: 5px;">Appears in <b>{m['pct']:.1f}%</b> of all jobs</div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <div style="background: rgba(255,255,255,0.04); padding: 15px; border-radius: 8px; flex: 1; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="color: #A0AEC0; font-size: 0.8rem;">Avg Experience</div>
+                            <div style="font-size: 1.1rem; font-weight: bold; color: #fff;">{fmt_exp(m['exp'])}</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.04); padding: 15px; border-radius: 8px; flex: 1; border: 1px solid rgba(255,255,255,0.05);">
+                            <div style="color: #A0AEC0; font-size: 0.8rem;">Typical Salary</div>
+                            <div style="font-size: 1.1rem; font-weight: bold; color: #fff;">{fmt_sal(m['sal'])}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #A0AEC0; font-size: 0.9rem; margin-bottom: 5px;">Top Demand States</div>
+                        <div style="color: #fff; font-size: 1rem;">{", ".join(m['states']) if m['states'] else "N/A"}</div>
+                    </div>
+                    
+                    <div style="margin-bottom: 15px;">
+                        <div style="color: #A0AEC0; font-size: 0.9rem; margin-bottom: 5px;">Common Job Titles</div>
+                        <ul style="color: #fff; font-size: 0.95rem; margin-top: 0; padding-left: 20px;">
+                            {''.join([f"<li>{r}</li>" for r in m['roles']])}
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <div style="color: #A0AEC0; font-size: 0.9rem; margin-bottom: 5px;">Est. Learning Time</div>
+                        <div style="color: #fff; font-size: 1rem;">{m['time']}</div>
+                    </div>
+                </div>
+                ''', unsafe_allow_html=True)
+                
+        # Head-to-Head Summary
+        st.write("### Head-to-Head Summary")
+        
+        if mA['postings'] == 0 or mB['postings'] == 0:
+            summary = "Not enough data to compare these two skills."
+        else:
+            ratio = mA['postings'] / mB['postings']
+            if ratio > 1.1:
+                demand_str = f"**{skill_a}** has **{ratio:.1f}x more job postings** than **{skill_b}**"
+            elif ratio < 0.9:
+                demand_str = f"**{skill_b}** has **{(1/ratio):.1f}x more job postings** than **{skill_a}**"
+            else:
+                demand_str = f"**{skill_a}** and **{skill_b}** have **roughly the same number of job postings**"
+                
+            state_a_top = mA['states'][0] if mA['states'] else "unknown"
+            state_b_top = mB['states'][0] if mB['states'] else "unknown"
+            if state_a_top == state_b_top:
+                state_str = f"Both skills are in highest demand in **{state_a_top}**."
+            else:
+                state_str = f"{skill_a} is highest in **{state_a_top}**, while {skill_b} peaks in **{state_b_top}**."
+                
+            exp_diff = (mA['exp'] or 0) - (mB['exp'] or 0)
+            if abs(exp_diff) < 0.8:
+                exp_str = "They typically require similar experience levels."
+            elif exp_diff >= 0.8:
+                exp_str = f"{skill_a} typically requires slightly more experience (+{exp_diff:.1f} yrs)."
+            else:
+                exp_str = f"{skill_b} typically requires slightly more experience (+{abs(exp_diff):.1f} yrs)."
+                
+            summary = f"{demand_str}. {state_str} {exp_str}"
+            
+        with st.container(border=True):
+            st.write(summary)
 
 # === TAB 3: Get My Recommendation ===
 elif st.session_state['active_page'] == "Get My Recommendation":
