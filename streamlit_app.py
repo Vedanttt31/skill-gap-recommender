@@ -30,79 +30,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Animated Background ---
-def render_background():
-    html_code = """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-        <style>
-            body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000000; }
-            #vanta-bg { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1; }
-            .overlay { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); z-index: 1; pointer-events: none; }
-        </style>
-    </head>
-    <body>
-        <div id="vanta-bg"></div>
-        <div class="overlay"></div>
-        <script>
-            VANTA.NET({
-                el: "#vanta-bg",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00,
-                color: 0x00d2ff,
-                backgroundColor: 0x000000,
-                points: 10.00,
-                maxDistance: 20.00,
-                spacing: 15.00,
-                showDots: true
-            });
-            // Proxy mouse events from parent to enable parallax if same-origin allows it
-            try {
-                if (window.parent && window.parent.document) {
-                    window.parent.document.addEventListener('mousemove', (e) => {
-                        window.dispatchEvent(new MouseEvent('mousemove', {
-                            clientX: e.clientX, clientY: e.clientY
-                        }));
-                    });
-                }
-            } catch(e) {}
-        </script>
-    </body>
-    </html>
-    """
-    
-    # Render component with height 0 so it doesn't displace content
-    components.html(html_code, height=0, width=0)
-    
-    # Inject CSS to make the component's iframe act as a fixed background
-    st.markdown("""
-    <style>
-    .stApp > header { background-color: transparent !important; }
-    .stApp { background-color: transparent !important; }
-    /* Target the zero-height iframe wrapper Streamlit creates and stretch it behind everything */
-    iframe[height="0"] {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: -999 !important;
-        border: none !important;
-        pointer-events: none !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-render_background()
-
 class EmployabilityMLP(nn.Module):
     def __init__(self, input_dim):
         super(EmployabilityMLP, self).__init__()
@@ -672,14 +599,147 @@ div[data-testid="stButton"] button[kind="primary"]:hover {
 # === PAGE ROUTING ===
 
 if st.session_state['active_page'] == "🏠 Home":
-    render_html('<div class="hero-container"><div class="hero-title">Find Your Next Skill.<br/>Get Hired Faster.</div><div class="hero-subtitle">Stop guessing what employers want. We analyze real job postings across India to tell you exactly what you need to learn.</div></div>')
+    # --- NEW HERO SECTION ---
+    st.markdown('''
+    <style>
+        /* Custom Button Styling */
+        div[data-testid="stMarkdownContainer"]:has(.hero-btn-wrapper) + div button {
+            background-color: white !important;
+            color: black !important;
+            border-radius: 50px !important;
+            border: none !important;
+            font-weight: 700 !important;
+            padding: 0.6rem 1.4rem !important;
+            font-size: 1rem !important;
+        }
+        div[data-testid="stMarkdownContainer"]:has(.hero-btn-wrapper) + div button:hover {
+            background-color: #f0f0f0 !important;
+            color: black !important;
+            border: none !important;
+        }
+        /* Top Spacing */
+        .hero-spacer { margin-top: 60px; }
+    </style>
+    ''', unsafe_allow_html=True)
+
+    h_col1, h_col2 = st.columns([1.1, 0.9])
     
-    # CTA Button
-    c1, c2, c3 = st.columns([1, 1, 1])
-    with c2:
-        if st.button("🎯 Get My Recommendation", use_container_width=True, type="primary"):
-            set_page("🎯 Get My Recommendation")
-            st.rerun()
+    with h_col1:
+        st.markdown('<div class="hero-spacer"></div>', unsafe_allow_html=True)
+        st.markdown('''
+        <h1 style="font-size: 4.5rem; line-height: 1.05; font-weight: 700; margin-bottom: 24px; color: white;">
+            From skill gap<br/>to job offer.
+        </h1>
+        <p style="color: #A0AEC0; font-size: 1.25rem; max-width: 480px; line-height: 1.6; margin-bottom: 40px;">
+            Stop guessing what employers want. We analyze real job postings across India to tell you exactly what to learn next.
+        </p>
+        ''', unsafe_allow_html=True)
+        
+        b1, b2 = st.columns([0.4, 0.6])
+        with b1:
+            st.markdown('<div class="hero-btn-wrapper"></div>', unsafe_allow_html=True)
+            if st.button("Get Started", key="hero_cta"):
+                set_page("🎯 Get My Recommendation")
+                st.rerun()
+        with b2:
+            # We add a subtle link that visually mirrors the reference
+            st.markdown('<div style="padding-top: 10px;"><a href="#" style="color: #A0AEC0; font-weight: 500; font-size: 1rem; text-decoration: none;">See how it works &rarr;</a></div>', unsafe_allow_html=True)
+        
+        st.markdown('<div style="margin-top: 60px; color: #555; font-size: 0.85rem; font-weight: 500;">Powered by real job market data across India</div>', unsafe_allow_html=True)
+
+    with h_col2:
+        threejs_code = """
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                body { margin: 0; overflow: hidden; background-color: #000000; }
+                #canvas-container { width: 100%; height: 500px; position: relative; display: flex; justify-content: center; align-items: center; }
+                .glow {
+                    position: absolute;
+                    width: 350px; height: 350px;
+                    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0) 70%);
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+                canvas { position: absolute; top: 0; left: 0; z-index: 2; width: 100% !important; height: 100% !important; }
+            </style>
+        </head>
+        <body>
+            <div id="canvas-container">
+                <div class="glow"></div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+            <script>
+                const container = document.getElementById('canvas-container');
+                const scene = new THREE.Scene();
+                
+                const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+                camera.position.z = 5;
+
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                container.appendChild(renderer.domElement);
+
+                const material = new THREE.MeshPhysicalMaterial({
+                    color: 0x111111,
+                    metalness: 0.9,
+                    roughness: 0.1,
+                    clearcoat: 1.0,
+                    clearcoatRoughness: 0.1,
+                    flatShading: true
+                });
+
+                const geometry = new THREE.IcosahedronGeometry(1.4, 0);
+                const crystal = new THREE.Mesh(geometry, material);
+                scene.add(crystal);
+
+                const keyLight = new THREE.DirectionalLight(0xffffff, 2);
+                keyLight.position.set(5, 5, 2);
+                scene.add(keyLight);
+
+                const rimLight = new THREE.DirectionalLight(0xffffff, 3);
+                rimLight.position.set(-5, 5, -5);
+                scene.add(rimLight);
+                
+                const fillLight = new THREE.AmbientLight(0x222222);
+                scene.add(fillLight);
+
+                let mouseX = 0;
+                let mouseY = 0;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+                    mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+                });
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    crystal.rotation.x += 0.003;
+                    crystal.rotation.y += 0.005;
+                    crystal.rotation.z += 0.002;
+                    
+                    crystal.position.x += (mouseX * 0.5 - crystal.position.x) * 0.05;
+                    crystal.position.y += (mouseY * 0.5 - crystal.position.y) * 0.05;
+
+                    renderer.render(scene, camera);
+                }
+                animate();
+                
+                window.addEventListener('resize', () => {
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                });
+            </script>
+        </body>
+        </html>
+        """
+        components.html(threejs_code, height=500)
+        
+    st.write("") # Spacer before bento grid
+
             
     # Bento Grid HTML
     bento_html = f"""<div class="bento-grid">
