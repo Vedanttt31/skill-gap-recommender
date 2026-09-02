@@ -39,9 +39,9 @@ def render_background():
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
         <style>
-            body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0E1117; }
+            body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000000; }
             #vanta-bg { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; z-index: -1; }
-            .overlay { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; background: rgba(14, 17, 23, 0.7); z-index: 1; pointer-events: none; }
+            .overlay { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); z-index: 1; pointer-events: none; }
         </style>
     </head>
     <body>
@@ -58,7 +58,7 @@ def render_background():
                 scale: 1.00,
                 scaleMobile: 1.00,
                 color: 0x00d2ff,
-                backgroundColor: 0x0e1117,
+                backgroundColor: 0x000000,
                 points: 10.00,
                 maxDistance: 20.00,
                 spacing: 15.00,
@@ -291,7 +291,7 @@ def get_roadmap_content(skill, user_state, user_exp, live_prob, effective_skills
 
 def render_onsite_roadmap(roadmap_data):
         render_html(f"""
-    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+    <div style="background: rgba(13, 13, 15, 0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px;">
         <h2 style="color: #00D2FF; margin-top:0;">🗺️ Roadmap: {roadmap_data['skill']}</h2>
         <p style="color: #A0AEC0; font-size: 1.1rem; margin-bottom: 20px;">{roadmap_data['desc']}</p>
         
@@ -538,10 +538,10 @@ selected_page = option_menu(
     default_index=idx,
     orientation="horizontal",
     styles={
-        "container": {"padding": "0!important", "background-color": "#0E1117"},
+        "container": {"padding": "0!important", "background-color": "#000000"},
         "icon": {"color": "#00D2FF", "font-size": "16px"},
-        "nav-link": {"font-size": "15px", "text-align": "center", "margin":"0px", "--hover-color": "#1E2430"},
-        "nav-link-selected": {"background-color": "#1E2430", "color": "#00D2FF", "border-bottom": "2px solid #00D2FF"}
+        "nav-link": {"font-size": "15px", "text-align": "center", "margin":"0px", "--hover-color": "#0D0D0F"},
+        "nav-link-selected": {"background-color": "#0D0D0F", "color": "#00D2FF", "border-bottom": "2px solid #00D2FF"}
     }
 )
 
@@ -634,7 +634,7 @@ div[data-testid="stButton"] button[kind="primary"]:hover {
 }
 
 .bento-card {
-    background: rgba(30, 36, 48, 0.5);
+    background: rgba(13, 13, 15, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -702,7 +702,7 @@ if st.session_state['active_page'] == "🏠 Home":
 <div style="color:#A0AEC0; font-size:1rem; max-width: 200px;">Real job postings analyzed across India.</div>
 </div>
 <!-- Glowing CSS Sphere Graphic -->
-<div style="width:160px; height:160px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #00D2FF, #0E1117 70%); box-shadow:0 0 30px rgba(0,210,255,0.3); opacity:0.9; margin-right:20px; position: relative;">
+<div style="width:160px; height:160px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #00D2FF, #000000 70%); box-shadow:0 0 30px rgba(0,210,255,0.3); opacity:0.9; margin-right:20px; position: relative;">
 <div style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:50%; border:1px solid rgba(255,255,255,0.1); transform: rotateX(60deg);"></div>
 <div style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:50%; border:1px solid rgba(255,255,255,0.1); transform: rotateY(60deg);"></div>
 </div>
@@ -711,7 +711,7 @@ if st.session_state['active_page'] == "🏠 Home":
 <div class="bento-card delay-3" style="align-items:center;">
 <div class="card-title">Model Accuracy</div>
 <div style="position:relative; width:120px; height:120px; border-radius:50%; background:conic-gradient(#00D2FF {model_accuracy:.0f}%, rgba(255,255,255,0.05) 0); display:flex; justify-content:center; align-items:center; margin-top:15px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
-<div style="width:100px; height:100px; border-radius:50%; background:#1E2430; display:flex; justify-content:center; align-items:center; font-size:1.8rem; font-weight:bold; color:white; box-shadow: 0 0 10px rgba(0,0,0,0.5);">{model_accuracy:.0f}%</div>
+<div style="width:100px; height:100px; border-radius:50%; background:#0D0D0F; display:flex; justify-content:center; align-items:center; font-size:1.8rem; font-weight:bold; color:white; box-shadow: 0 0 10px rgba(0,0,0,0.5);">{model_accuracy:.0f}%</div>
 </div>
 </div>
 <!-- National Reach -->
@@ -772,8 +772,8 @@ elif st.session_state['active_page'] == "📊 Dashboard":
             hover_name='state',
             hover_data={'map_state': False, 'UR': True}
         )
-        fig_map.update_geos(fitbounds="locations", visible=False, bgcolor="#0E1117")
-        fig_map.update_layout(height=700, margin={"r":0,"t":0,"l":0,"b":0}, paper_bgcolor="#0E1117", plot_bgcolor="#0E1117", font_color="#FFFFFF")
+        fig_map.update_geos(fitbounds="locations", visible=False, bgcolor="#000000")
+        fig_map.update_layout(height=700, margin={"r":0,"t":0,"l":0,"b":0}, paper_bgcolor="#000000", plot_bgcolor="#000000", font_color="#FFFFFF")
         st.plotly_chart(fig_map, use_container_width=True)
     else:
         st.warning("Could not load map data. Please check your internet connection.")
@@ -787,9 +787,9 @@ elif st.session_state['active_page'] == "📊 Dashboard":
     fig_bar = px.bar(
         top_skills.sort_values('demand_score', ascending=True), 
         x='demand_score', y='skill', orientation='h',
-        color='demand_score', color_continuous_scale="Reds"
+        color='demand_score', color_continuous_scale="Greens"
     )
-    fig_bar.update_layout(height=450, margin={"r":0,"t":0,"l":0,"b":0}, paper_bgcolor="#0E1117", plot_bgcolor="#0E1117", font_color="#FFFFFF", showlegend=False, xaxis_title="Demand Score", yaxis_title="")
+    fig_bar.update_layout(height=450, margin={"r":0,"t":0,"l":0,"b":0}, paper_bgcolor="#000000", plot_bgcolor="#000000", font_color="#FFFFFF", showlegend=False, xaxis_title="Demand Score", yaxis_title="")
     st.plotly_chart(fig_bar, use_container_width=True)
 
     st.divider()
@@ -811,8 +811,8 @@ elif st.session_state['active_page'] == "📊 Dashboard":
         fig_cluster.update_layout(
             xaxis_title="Unemployment Rate (%)", 
             margin={"r":0,"t":30,"l":0,"b":0}, 
-            paper_bgcolor="#0E1117", 
-            plot_bgcolor="#0E1117", 
+            paper_bgcolor="#000000", 
+            plot_bgcolor="#000000", 
             font_color="#FFFFFF", 
             legend=dict(orientation="h", y=-0.3, title="")
         )
