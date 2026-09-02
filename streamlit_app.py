@@ -218,22 +218,22 @@ def get_roadmap_content(skill, user_state, user_exp, live_prob, effective_skills
 
 def render_onsite_roadmap(roadmap_data):
         render_html(f"""
-    <div style="background: rgba(13, 13, 15, 0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px;">
-        <h2 style="color: #00D2FF; margin-top:0;">🗺️ Roadmap: {roadmap_data['skill']}</h2>
+    <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px;">
+        <div style="color: #FFFFFF; font-size: 2rem; font-weight: 700; margin-top:0; margin-bottom: 10px;">Roadmap: {roadmap_data['skill']}</div>
         <p style="color: #A0AEC0; font-size: 1.1rem; margin-bottom: 20px;">{roadmap_data['desc']}</p>
         
         <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px;">
-                <div style="color: #A0AEC0; font-size: 0.9rem;">⏱️ Estimated Time</div>
-                <div style="font-size: 1.2rem; font-weight: bold;">{roadmap_data['est_time']}</div>
+            <div style="background: rgba(255,255,255,0.04); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="color: #A0AEC0; font-size: 0.9rem;">Estimated Time</div>
+                <div style="font-size: 1.2rem; font-weight: bold; color: #fff;">{roadmap_data['est_time']}</div>
             </div>
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px;">
-                <div style="color: #A0AEC0; font-size: 0.9rem;">📈 Employability Uplift</div>
+            <div style="background: rgba(255,255,255,0.04); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="color: #A0AEC0; font-size: 0.9rem;">Employability Uplift</div>
                 <div style="font-size: 1.2rem; font-weight: bold; color: #00D2FF;">+{roadmap_data['uplift']*100:.1f}%</div>
             </div>
-            <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px;">
-                <div style="color: #A0AEC0; font-size: 0.9rem;">📍 Top Demand States</div>
-                <div style="font-size: 1.1rem; font-weight: bold;">{', '.join(roadmap_data['top_states'])}</div>
+            <div style="background: rgba(255,255,255,0.04); padding: 15px; border-radius: 8px; flex: 1; min-width: 200px; border: 1px solid rgba(255,255,255,0.05);">
+                <div style="color: #A0AEC0; font-size: 0.9rem;">Top Demand States</div>
+                <div style="font-size: 1.1rem; font-weight: bold; color: #fff;">{', '.join(roadmap_data['top_states'])}</div>
             </div>
         </div>
         
@@ -258,7 +258,7 @@ def render_onsite_roadmap(roadmap_data):
             </ul>
         </div>
         
-        <h4 style="margin-bottom: 10px;">💼 Example Roles Unlocked</h4>
+        <h4 style="margin-bottom: 10px;">Example Roles Unlocked</h4>
         <ul style="color: #A0AEC0; margin-top: 5px;">
             {''.join([f"<li>{r.title()}</li>" for r in roadmap_data['roles']])}
         </ul>
@@ -643,7 +643,7 @@ if st.session_state['active_page'] == "Home":
                 st.rerun()
         with b2:
             # We add a subtle link that visually mirrors the reference
-            st.markdown('<div style="padding-top: 10px;"><a href="#" style="color: #A0AEC0; font-weight: 500; font-size: 1rem; text-decoration: none;">See how it works &rarr;</a></div>', unsafe_allow_html=True)
+            st.markdown('', unsafe_allow_html=True)
         
         st.markdown('<div style="margin-top: 60px; color: #555; font-size: 0.85rem; font-weight: 500;">Powered by real job market data across India</div>', unsafe_allow_html=True)
 
@@ -815,22 +815,22 @@ if st.session_state['active_page'] == "Home":
     render_html(bento_html)
 
 elif st.session_state['active_page'] == "Dashboard":
-    st.write("### 🌍 National Job Market Overview")
+    st.write("### National Job Market Overview")
     
     m1, m2, m3, m4 = st.columns(4)
     with m1:
-        st.metric(label="📉 Avg Unemployment Rate", value=f"{state_df['UR'].mean():.1f}%")
+        st.metric(label="Avg Unemployment Rate", value=f"{state_df['UR'].mean():.1f}%")
     with m2:
-        st.metric(label="💼 Total Jobs Analyzed", value=f"{len(naukri_df):,}")
+        st.metric(label="Total Jobs Analyzed", value=f"{len(naukri_df):,}")
     with m3:
-        st.metric(label="🗺️ States Covered", value=f"{state_df['state'].nunique()}")
+        st.metric(label="States Covered", value=f"{state_df['state'].nunique()}")
     with m4:
         top_national = skill_demand.groupby('skill')['demand_score'].sum().idxmax().title()
-        st.metric(label="🔥 Top Skill Nationally", value=top_national)
+        st.metric(label="Top Skill Nationally", value=top_national)
         
     st.divider()
     
-    st.write("#### 🗺️ Unemployment Rate Across India")
+    st.write("#### Unemployment Rate Across India")
     st.caption("Hover over a state to see its unemployment percentage.")
     if india_geojson:
         fig_map = px.choropleth(
@@ -851,7 +851,7 @@ elif st.session_state['active_page'] == "Dashboard":
         
     st.divider()
 
-    st.write("#### 🏆 Top 10 Most Wanted Skills")
+    st.write("#### Top 10 Most Wanted Skills")
     st.caption("The skills that appear in the most job descriptions nationally.")
     
     top_skills = skill_demand.groupby('skill')['demand_score'].sum().sort_values(ascending=False).head(10).reset_index()
@@ -868,7 +868,7 @@ elif st.session_state['active_page'] == "Dashboard":
     c3, c4 = st.columns((1, 1))
     
     with c3:
-        st.write("#### 🏢 Job Market Health by State")
+        st.write("#### Job Market Health by State")
         st.caption("Comparing Unemployment against Available Jobs.")
         
         # Add 1 to job_count so 0s don't disappear on log scale
@@ -896,7 +896,7 @@ elif st.session_state['active_page'] == "Dashboard":
         st.plotly_chart(fig_cluster, use_container_width=True)
         
     with c4:
-        st.write("#### ⚠️ Toughest Job Markets")
+        st.write("#### Toughest Job Markets")
         st.caption("States ranked by severity (high unemployment + low job postings).")
         state_df['Severity_Score'] = state_df['UR'] + (1 / (state_df['job_count'] + 1)) * 100
         ranking_df = state_df.sort_values('Severity_Score', ascending=False)[['state', 'UR', 'job_count', 'Archetype']].head(8)
@@ -917,7 +917,7 @@ elif st.session_state['active_page'] == "Dashboard":
 
 # === TAB Compare Skills ===
 elif st.session_state['active_page'] == "Compare Skills":
-    st.write("### 🔍 Compare Any Two Skills")
+    st.write("### Compare Any Two Skills")
     st.write("See which skill is more in-demand and where.")
     
     cmp1, cmp2 = st.columns(2)
@@ -947,7 +947,7 @@ elif st.session_state['active_page'] == "Compare Skills":
                 st.write(f"This skill appears in roughly **{pct_a:.1f}%** of all jobs.")
                 st.write("**Top States for this skill:**")
                 for s in states_a:
-                    st.caption(f"📍 {s}")
+                    st.caption(f"{s}")
                     
         with c_res2:
             with st.container(border=True):
@@ -956,20 +956,20 @@ elif st.session_state['active_page'] == "Compare Skills":
                 st.write(f"This skill appears in roughly **{pct_b:.1f}%** of all jobs.")
                 st.write("**Top States for this skill:**")
                 for s in states_b:
-                    st.caption(f"📍 {s}")
+                    st.caption(f"{s}")
 
 # === TAB 3: Get My Recommendation ===
 elif st.session_state['active_page'] == "Get My Recommendation":
-    st.write("### 🎯 Find Your Next Skill")
+    st.write("### Find Your Next Skill")
     
     st.write("Or try a quick demo persona:")
     btn1, btn2, btn3, _ = st.columns([1.5, 2, 1.5, 1])
     with btn1:
-        st.button("🎓 Fresh Graduate, Delhi", on_click=apply_persona, args=("Delhi", 0.0, "Undergraduate", ["communication", "ms office"]))
+        st.button("Fresh Graduate, Delhi", on_click=apply_persona, args=("Delhi", 0.0, "Undergraduate", ["communication", "ms office"]))
     with btn2:
-        st.button("💼 3 Yrs Exp, Mumbai, Excel Only", on_click=apply_persona, args=("Maharashtra", 3.0, "Undergraduate", ["excel"]))
+        st.button("3 Yrs Exp, Mumbai, Excel Only", on_click=apply_persona, args=("Maharashtra", 3.0, "Undergraduate", ["excel"]))
     with btn3:
-        st.button("🏭 Diploma Holder, Bihar", on_click=apply_persona, args=("Bihar", 1.0, "Diploma", ["data entry", "typing"]))
+        st.button("Diploma Holder, Bihar", on_click=apply_persona, args=("Bihar", 1.0, "Diploma", ["data entry", "typing"]))
         
     st.write("")
     
@@ -991,7 +991,7 @@ elif st.session_state['active_page'] == "Get My Recommendation":
             )
             
         st.write("")
-        submit = st.form_submit_button("🚀 Find My Missing Skills", use_container_width=True)
+        submit = st.form_submit_button("Find My Missing Skills", use_container_width=True)
         
     if submit:
         if not current_skills:
@@ -1003,7 +1003,7 @@ elif st.session_state['active_page'] == "Get My Recommendation":
             
     if st.session_state.get('results_active') and st.session_state.p_skills:
         st.markdown("---")
-        st.write("### 💡 Your Personalized Recommendations")
+        st.write("### Your Personalized Recommendations")
         
         s_user_state = st.session_state.p_state
         s_user_exp = st.session_state.p_exp
@@ -1049,7 +1049,7 @@ elif st.session_state['active_page'] == "Get My Recommendation":
             top_new_prob = uplift_df.iloc[0]['New Match Rate']
             top_uplift = uplift_df.iloc[0]['Uplift']
             
-            st.write("### 📈 Your Placement Chance")
+            st.write("### Your Placement Chance")
             st.write("Watch your placement chance grow as you learn new skills. The live tracker below updates immediately when you check off a skill you've started learning.")
             
             b1, b2 = st.columns(2)
@@ -1066,11 +1066,11 @@ elif st.session_state['active_page'] == "Get My Recommendation":
             st.divider()
             
             path_desc, next_skills = get_career_path(effective_skills)
-            st.info(f"🛣️ **Common Career Progression for your skills:** {path_desc}\n\n**To reach the next step, focus on:** {next_skills}")
+            st.info(f"**Common Career Progression for your skills:** {path_desc}\n\n**To reach the next step, focus on:** {next_skills}")
             
             st.divider()
             
-            st.write("### 💡 Top Skills to Learn Next")
+            st.write("### Top Skills to Learn Next")
             st.caption("Check the box when you start learning a skill to add it to your profile and watch your live placement chance grow!")
             
             top3 = uplift_df.head(3)
@@ -1095,7 +1095,7 @@ elif st.session_state['active_page'] == "Get My Recommendation":
                     
             st.divider()
             
-            st.write("### 🚀 Power Combo Recommendation")
+            st.write("### Power Combo Recommendation")
             combo_text = ""
             if len(top3) >= 2:
                 combo_skills = [top3.iloc[0]['Recommended Skill'], top3.iloc[1]['Recommended Skill']]
@@ -1113,7 +1113,7 @@ elif st.session_state['active_page'] == "Get My Recommendation":
                 
             st.divider()
             
-            st.write("### 📍 Where your skills are most in demand")
+            st.write("### Where your skills are most in demand")
             
             state_probs = []
             for s in state_df['state'].dropna().unique():
@@ -1138,7 +1138,7 @@ elif st.session_state['active_page'] == "Get My Recommendation":
             
             st.divider()
             
-            st.write("### 📄 Take Your Roadmap With You")
+            st.write("### Take Your Roadmap With You")
             st.write("Download a neat 1-page summary of your current profile and your recommended skills to review later.")
             
             roadmaps_data = []
@@ -1158,11 +1158,11 @@ elif st.session_state['active_page'] == "Get My Recommendation":
             )
             
         st.divider()
-        st.caption(f"🤖 **How confident is this?** Our AI recommendation model is **{model_accuracy:.1f}% accurate** based on testing against {len(naukri_df):,} real job postings.")
+        st.caption(f"**How confident is this?** Our AI recommendation model is **{model_accuracy:.1f}% accurate** based on testing against {len(naukri_df):,} real job postings.")
 
 
 elif selected_page == "Skill Roadmaps":
-    render_html("<h1 style='text-align: center; color: #00D2FF;'>🗺️ Skill Roadmaps</h1>")
+    render_html("<div style='font-size: 2.5rem; font-weight: 700; text-align: center; color: #FFFFFF; margin-bottom: 20px;'>Skill Roadmaps</div>")
     st.write("Explore detailed learning paths and career impact for any skill in our database.")
     
     # We need a state and exp to calculate uplift context. Let's provide defaults or use session state.
