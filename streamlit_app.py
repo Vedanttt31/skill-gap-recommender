@@ -600,7 +600,7 @@ div[data-testid="stButton"] button[kind="primary"]:hover {
 
 if st.session_state['active_page'] == "Home":
     # --- NEW HERO SECTION ---
-    st.markdown('''
+    render_html('''
     <style>
         /* Custom Button Styling */
         div[data-testid="stMarkdownContainer"]:has(.hero-btn-wrapper) + div button {
@@ -620,32 +620,32 @@ if st.session_state['active_page'] == "Home":
         /* Top Spacing */
         .hero-spacer { margin-top: 60px; }
     </style>
-    ''', unsafe_allow_html=True)
+    ''')
 
     h_col1, h_col2 = st.columns([1.1, 0.9])
     
     with h_col1:
-        st.markdown('<div class="hero-spacer"></div>', unsafe_allow_html=True)
-        st.markdown('''
+        render_html('<div class="hero-spacer"></div>')
+        render_html('''
         <h1 style="font-size: 4.5rem; line-height: 1.05; font-weight: 700; margin-bottom: 24px; color: white;">
             From skill gap<br/>to job offer.
         </h1>
         <p style="color: #A0AEC0; font-size: 1.25rem; max-width: 480px; line-height: 1.6; margin-bottom: 40px;">
             Stop guessing what employers want. We analyze real job postings across India to tell you exactly what to learn next.
         </p>
-        ''', unsafe_allow_html=True)
+        ''')
         
         b1, b2 = st.columns([0.4, 0.6])
         with b1:
-            st.markdown('<div class="hero-btn-wrapper"></div>', unsafe_allow_html=True)
+            render_html('<div class="hero-btn-wrapper"></div>')
             if st.button("Get Started", key="hero_cta"):
                 set_page("Get My Recommendation")
                 st.rerun()
         with b2:
             # We add a subtle link that visually mirrors the reference
-            st.markdown('', unsafe_allow_html=True)
+            render_html('')
         
-        st.markdown('<div style="margin-top: 60px; color: #555; font-size: 0.85rem; font-weight: 500;">Powered by real job market data across India</div>', unsafe_allow_html=True)
+        render_html('<div style="margin-top: 60px; color: #555; font-size: 0.85rem; font-weight: 500;">Powered by real job market data across India</div>')
 
     with h_col2:
         threejs_code = """
@@ -966,7 +966,7 @@ elif st.session_state['active_page'] == "Compare Skills":
         
         for col, skill, m in [(c_res1, skill_a, mA), (c_res2, skill_b, mB)]:
             with col:
-                st.markdown(f'''
+                render_html(f'''
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 25px; margin-bottom: 20px; height: 100%;">
                     <div style="color: #FFFFFF; font-size: 1.6rem; font-weight: 700; margin-bottom: 20px;">{skill}</div>
                     
@@ -1004,7 +1004,7 @@ elif st.session_state['active_page'] == "Compare Skills":
                         <div style="color: #fff; font-size: 1rem;">{m['time']}</div>
                     </div>
                 </div>
-                ''', unsafe_allow_html=True)
+                ''')
                 
         # Head-to-Head Summary
         st.write("### Head-to-Head Summary")
