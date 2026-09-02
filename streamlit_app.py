@@ -450,12 +450,12 @@ def apply_persona(state, exp, edu, skills):
 
 # --- Navigation & Page Routing ---
 if 'active_page' not in st.session_state:
-    st.session_state['active_page'] = "🏠 Home"
+    st.session_state['active_page'] = "Home"
 
 def set_page(page_name):
     st.session_state['active_page'] = page_name
 
-pages = ["🏠 Home", "🎯 Get My Recommendation", "🗺️ Skill Roadmaps", "📊 Dashboard", "🔍 Compare Skills"]
+pages = ["Home", "Get My Recommendation", "Skill Roadmaps", "Dashboard", "Compare Skills"]
 idx = pages.index(st.session_state['active_page']) if st.session_state['active_page'] in pages else 0
 
 selected_page = option_menu(
@@ -598,7 +598,7 @@ div[data-testid="stButton"] button[kind="primary"]:hover {
 
 # === PAGE ROUTING ===
 
-if st.session_state['active_page'] == "🏠 Home":
+if st.session_state['active_page'] == "Home":
     # --- NEW HERO SECTION ---
     st.markdown('''
     <style>
@@ -639,7 +639,7 @@ if st.session_state['active_page'] == "🏠 Home":
         with b1:
             st.markdown('<div class="hero-btn-wrapper"></div>', unsafe_allow_html=True)
             if st.button("Get Started", key="hero_cta"):
-                set_page("🎯 Get My Recommendation")
+                set_page("Get My Recommendation")
                 st.rerun()
         with b2:
             # We add a subtle link that visually mirrors the reference
@@ -654,15 +654,17 @@ if st.session_state['active_page'] == "🏠 Home":
         <head>
             <style>
                 body { margin: 0; overflow: hidden; background-color: #000000; }
-                #canvas-container { width: 100%; height: 500px; position: relative; display: flex; justify-content: center; align-items: center; }
+                #canvas-container { width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; display: flex; justify-content: center; align-items: center; }
                 .glow {
                     position: absolute;
+                    top: 50%; left: 50%;
+                    transform: translate(-50%, -50%);
                     width: 350px; height: 350px;
-                    background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, rgba(0,0,0,0) 70%);
+                    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0) 70%);
                     border-radius: 50%;
                     z-index: 1;
                 }
-                canvas { position: absolute; top: 0; left: 0; z-index: 2; width: 100% !important; height: 100% !important; }
+                canvas { position: absolute; top: 0; left: 0; z-index: 2; }
             </style>
         </head>
         <body>
@@ -674,36 +676,45 @@ if st.session_state['active_page'] == "🏠 Home":
                 const container = document.getElementById('canvas-container');
                 const scene = new THREE.Scene();
                 
-                const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-                camera.position.z = 5;
+                const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 7;
 
                 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-                renderer.setSize(container.clientWidth, container.clientHeight);
-                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
                 container.appendChild(renderer.domElement);
 
-                const material = new THREE.MeshPhysicalMaterial({
-                    color: 0x111111,
-                    metalness: 0.9,
-                    roughness: 0.1,
-                    clearcoat: 1.0,
-                    clearcoatRoughness: 0.1,
-                    flatShading: true
+                const material = new THREE.MeshStandardMaterial({
+                    color: 0x151515,
+                    metalness: 0.8,
+                    roughness: 0.15,
                 });
 
-                const geometry = new THREE.IcosahedronGeometry(1.4, 0);
-                const crystal = new THREE.Mesh(geometry, material);
+                const crystal = new THREE.Group();
+                const boxGeo = new THREE.BoxGeometry(0.9, 0.9, 0.9);
+                for(let x = -1; x <= 1; x++) {
+                    for(let y = -1; y <= 1; y++) {
+                        for(let z = -1; z <= 1; z++) {
+                            const cubie = new THREE.Mesh(boxGeo, material);
+                            cubie.position.set(x * 0.95, y * 0.95, z * 0.95);
+                            crystal.add(cubie);
+                        }
+                    }
+                }
+                crystal.rotation.x = Math.PI / 4;
+                crystal.rotation.y = Math.PI / 4;
                 scene.add(crystal);
 
-                const keyLight = new THREE.DirectionalLight(0xffffff, 2);
-                keyLight.position.set(5, 5, 2);
+                // Strong rim/key lighting to highlight edges against black
+                const keyLight = new THREE.DirectionalLight(0xffffff, 4);
+                keyLight.position.set(5, 5, 5);
                 scene.add(keyLight);
 
-                const rimLight = new THREE.DirectionalLight(0xffffff, 3);
+                const rimLight = new THREE.DirectionalLight(0xffffff, 8);
                 rimLight.position.set(-5, 5, -5);
                 scene.add(rimLight);
                 
-                const fillLight = new THREE.AmbientLight(0x222222);
+                const fillLight = new THREE.AmbientLight(0x333333);
                 scene.add(fillLight);
 
                 let mouseX = 0;
@@ -728,9 +739,9 @@ if st.session_state['active_page'] == "🏠 Home":
                 animate();
                 
                 window.addEventListener('resize', () => {
-                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.aspect = window.innerWidth / window.innerHeight;
                     camera.updateProjectionMatrix();
-                    renderer.setSize(container.clientWidth, container.clientHeight);
+                    renderer.setSize(window.innerWidth, window.innerHeight);
                 });
             </script>
         </body>
@@ -747,11 +758,11 @@ if st.session_state['active_page'] == "🏠 Home":
 <div class="bento-card card-tall delay-1" style="align-items: center;">
 <div class="card-title">Match Pipeline</div>
 <div style="display:flex; flex-direction:column; align-items:center; margin-top:30px; width:100%;">
-<div style="background:rgba(0,210,255,0.05); padding:12px; border-radius:12px; border:1px solid rgba(0,210,255,0.3); width:100%; text-align:center; font-weight:600;">Your Skills</div>
-<div style="width:2px; height:40px; background:linear-gradient(to bottom, #00D2FF, #3A7BD5); margin: 5px 0;"></div>
-<div style="background:rgba(58,123,213,0.05); padding:12px; border-radius:12px; border:1px solid rgba(58,123,213,0.3); width:100%; text-align:center; font-weight:600;">Job Market Data</div>
-<div style="width:2px; height:40px; background:linear-gradient(to bottom, #3A7BD5, #00D2FF); margin: 5px 0;"></div>
-<div style="background:rgba(0,210,255,0.15); padding:12px; border-radius:12px; border:1px solid #00D2FF; width:100%; text-align:center; font-weight:bold; box-shadow:0 0 15px rgba(0,210,255,0.4); color: white;">Recommendation</div>
+<div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); width:100%; text-align:center; font-weight:600;">Your Skills</div>
+<div style="width:2px; height:40px; background:linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.1)); margin: 5px 0;"></div>
+<div style="background:rgba(255,255,255,0.02); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); width:100%; text-align:center; font-weight:600;">Job Market Data</div>
+<div style="width:2px; height:40px; background:linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0.3)); margin: 5px 0;"></div>
+<div style="background:rgba(255,255,255,0.08); padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.3); width:100%; text-align:center; font-weight:bold; box-shadow:0 0 15px rgba(255,255,255,0.1); color: white;">Recommendation</div>
 </div>
 </div>
 <!-- Real-Time Insight (Wide) -->
@@ -762,7 +773,7 @@ if st.session_state['active_page'] == "🏠 Home":
 <div style="color:#A0AEC0; font-size:1rem; max-width: 200px;">Real job postings analyzed across India.</div>
 </div>
 <!-- Glowing CSS Sphere Graphic -->
-<div style="width:160px; height:160px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #00D2FF, #000000 70%); box-shadow:0 0 30px rgba(0,210,255,0.3); opacity:0.9; margin-right:20px; position: relative;">
+<div style="width:160px; height:160px; border-radius:50%; background:radial-gradient(circle at 35% 35%, rgba(255,255,255,0.3), #000000 70%); box-shadow:0 0 20px rgba(255,255,255,0.1); opacity:0.9; margin-right:20px; position: relative;">
 <div style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:50%; border:1px solid rgba(255,255,255,0.1); transform: rotateX(60deg);"></div>
 <div style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:50%; border:1px solid rgba(255,255,255,0.1); transform: rotateY(60deg);"></div>
 </div>
@@ -770,7 +781,7 @@ if st.session_state['active_page'] == "🏠 Home":
 <!-- Model Accuracy -->
 <div class="bento-card delay-3" style="align-items:center;">
 <div class="card-title">Model Accuracy</div>
-<div style="position:relative; width:120px; height:120px; border-radius:50%; background:conic-gradient(#00D2FF {model_accuracy:.0f}%, rgba(255,255,255,0.05) 0); display:flex; justify-content:center; align-items:center; margin-top:15px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
+<div style="position:relative; width:120px; height:120px; border-radius:50%; background:conic-gradient(rgba(255,255,255,0.7) {model_accuracy:.0f}%, rgba(255,255,255,0.05) 0); display:flex; justify-content:center; align-items:center; margin-top:15px; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
 <div style="width:100px; height:100px; border-radius:50%; background:#0D0D0F; display:flex; justify-content:center; align-items:center; font-size:1.8rem; font-weight:bold; color:white; box-shadow: 0 0 10px rgba(0,0,0,0.5);">{model_accuracy:.0f}%</div>
 </div>
 </div>
@@ -781,29 +792,29 @@ if st.session_state['active_page'] == "🏠 Home":
 <div style="color:#A0AEC0; font-size:0.9rem;">States & Union Territories</div>
 <!-- Animated bar chart -->
 <div style="display:flex; align-items:flex-end; gap:6px; height:45px; margin-top:20px;">
-<div style="width:18%; background:rgba(58,123,213,0.5); height:40%; border-radius:4px;"></div>
-<div style="width:18%; background:#00D2FF; height:100%; border-radius:4px; box-shadow:0 0 12px rgba(0,210,255,0.6);"></div>
-<div style="width:18%; background:rgba(58,123,213,0.5); height:70%; border-radius:4px;"></div>
-<div style="width:18%; background:rgba(58,123,213,0.5); height:50%; border-radius:4px;"></div>
-<div style="width:18%; background:rgba(58,123,213,0.5); height:85%; border-radius:4px;"></div>
+<div style="width:18%; background:rgba(255,255,255,0.1); height:40%; border-radius:4px;"></div>
+<div style="width:18%; background:rgba(255,255,255,0.8); height:100%; border-radius:4px; box-shadow:0 0 12px rgba(255,255,255,0.2);"></div>
+<div style="width:18%; background:rgba(255,255,255,0.1); height:70%; border-radius:4px;"></div>
+<div style="width:18%; background:rgba(255,255,255,0.1); height:50%; border-radius:4px;"></div>
+<div style="width:18%; background:rgba(255,255,255,0.1); height:85%; border-radius:4px;"></div>
 </div>
 </div>
 <!-- Trusted Sources -->
 <div class="bento-card delay-5" style="align-items:center; text-align:center;">
-<div style="font-size:3.5rem; margin-bottom:15px; filter: drop-shadow(0 0 10px rgba(0,210,255,0.3));">🛡️</div>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #A0AEC0; margin-bottom: 15px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
 <div class="card-title" style="margin-bottom:5px;">Trusted Data</div>
 <div style="color:#A0AEC0; font-size:0.85rem;">Sourced directly from official gov surveys & live portals.</div>
 </div>
 <!-- Skill Roadmaps Feature -->
-<div class="bento-card delay-6" style="align-items:center; text-align:center; background:linear-gradient(135deg, rgba(0,210,255,0.05), rgba(58,123,213,0.05)); border:1px solid rgba(0,210,255,0.15);">
-<div style="font-size:3.5rem; margin-bottom:15px; filter:drop-shadow(0 0 15px rgba(0,210,255,0.6));">🎯</div>
+<div class="bento-card delay-6" style="align-items:center; text-align:center; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.1);">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: #A0AEC0; margin-bottom: 15px;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
 <div class="card-title" style="margin-bottom:5px;">Targeted Growth</div>
 <div style="color:#A0AEC0; font-size:0.85rem;">Step-by-step roadmaps to master high-demand skills.</div>
 </div>
 </div>"""
     render_html(bento_html)
 
-elif st.session_state['active_page'] == "📊 Dashboard":
+elif st.session_state['active_page'] == "Dashboard":
     st.write("### 🌍 National Job Market Overview")
     
     m1, m2, m3, m4 = st.columns(4)
@@ -905,7 +916,7 @@ elif st.session_state['active_page'] == "📊 Dashboard":
         )
 
 # === TAB Compare Skills ===
-elif st.session_state['active_page'] == "🔍 Compare Skills":
+elif st.session_state['active_page'] == "Compare Skills":
     st.write("### 🔍 Compare Any Two Skills")
     st.write("See which skill is more in-demand and where.")
     
@@ -948,7 +959,7 @@ elif st.session_state['active_page'] == "🔍 Compare Skills":
                     st.caption(f"📍 {s}")
 
 # === TAB 3: Get My Recommendation ===
-elif st.session_state['active_page'] == "🎯 Get My Recommendation":
+elif st.session_state['active_page'] == "Get My Recommendation":
     st.write("### 🎯 Find Your Next Skill")
     
     st.write("Or try a quick demo persona:")
@@ -1150,7 +1161,7 @@ elif st.session_state['active_page'] == "🎯 Get My Recommendation":
         st.caption(f"🤖 **How confident is this?** Our AI recommendation model is **{model_accuracy:.1f}% accurate** based on testing against {len(naukri_df):,} real job postings.")
 
 
-elif selected_page == "🗺️ Skill Roadmaps":
+elif selected_page == "Skill Roadmaps":
     render_html("<h1 style='text-align: center; color: #00D2FF;'>🗺️ Skill Roadmaps</h1>")
     st.write("Explore detailed learning paths and career impact for any skill in our database.")
     
