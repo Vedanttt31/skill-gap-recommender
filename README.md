@@ -15,18 +15,23 @@ This tool combines job posting data across India to extract the exact skills emp
 ## Folder Structure
 
 ```
-DT Project/
-├── 00_combine_job_data.py       # Combines raw data into single job dataset
-├── 01_eda.py                    # Exploratory data analysis
-├── 02_feature_engineering.py    # Builds the finalized feature dataset
-├── 02b_skill_normalization.py   # Normalizes hyper-specific skills
-├── 03_model_clustering.py       # ML clustering for jobs/skills
-├── 04_model_recommender.py      # Base recommendation logic
-├── 05_model_predictive.py       # Trains PyTorch MLP model
+skill-gap-recommender/
+├── data/                        # Processed datasets (raw datasets excluded)
+├── models/                      # Trained ML models & embeddings
+├── scripts/                     # Core data pipeline and model training scripts
+│   ├── 00_combine_job_data.py   
+│   ├── 01_eda.py                
+│   ├── 02_feature_engineering.py
+│   ├── 02b_skill_normalization.py
+│   ├── 03_model_clustering.py   
+│   ├── 04_model_recommender.py  
+│   └── 05_model_predictive.py   
 ├── streamlit_app.py             # Main Streamlit web application
 ├── requirements.txt             # Python dependencies
-├── data/                        # Processed datasets (raw datasets excluded)
-└── models/                      # Trained models & embeddings
+├── .gitignore
+├── .streamlit/
+│   └── config.toml              # Streamlit theme configuration
+└── README.md
 ```
 
 ## How to Run the Application Locally
@@ -50,13 +55,13 @@ If you want to re-run the entire pipeline from scratch, you will need to add the
 - `naukri_com-job_sample.csv` (~50MB)
 
 Then run the pipeline scripts sequentially:
-1. `python 00_combine_job_data.py` (Produces `combined_job_postings.csv`)
-2. `python 01_eda.py`
-3. `python 02_feature_engineering.py` (Produces `naukri_mapped.csv` and `naukri_features.csv`)
-4. `python 02b_skill_normalization.py`
-5. `python 03_model_clustering.py`
-6. `python 04_model_recommender.py`
-7. `python 05_model_predictive.py`
+1. `python scripts/00_combine_job_data.py` (Produces `combined_job_postings.csv`)
+2. `python scripts/01_eda.py`
+3. `python scripts/02_feature_engineering.py` (Produces `naukri_mapped.csv` and `naukri_features.csv`)
+4. `python scripts/02b_skill_normalization.py`
+5. `python scripts/03_model_clustering.py`
+6. `python scripts/04_model_recommender.py`
+7. `python scripts/05_model_predictive.py`
 
 Excluded files (added to `.gitignore`):
 - `data/indian-job-market-dataset-2025.xlsx`
