@@ -93,15 +93,15 @@ try:
     st_model, st_dict, pred_model, pred_meta = load_models()
     model_type = pred_meta['type']
     model_accuracy = pred_meta.get('accuracy', 0.73) * 100 
+except Exception as e:
+    st.error(f"Error loading required data or models: {e}")
+    st.stop()
 
 @st.cache_resource
 def get_job_embeddings_matrix():
     return np.array([st_dict.get(s, np.zeros(384)) for s in naukri_df['skills_str']])
 
 job_embeddings_matrix = get_job_embeddings_matrix()
-except Exception as e:
-    st.error(f"Error loading required data or models: {e}")
-    st.stop()
 
 all_skills_raw = skill_demand['skill'].dropna().astype(str).tolist()
 all_skills = sorted(list(set([s.strip().lower() for s in all_skills_raw if s.strip()])))
