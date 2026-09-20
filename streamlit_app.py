@@ -52,7 +52,7 @@ def load_data():
     naukri_df = pd.read_csv('data/naukri_features.csv')
     skill_demand = pd.read_csv('data/skill_demand_scores.csv')
     
-    naukri_df['skills_list'] = naukri_df['skills_list'].apply(lambda x: ast.literal_eval(x) if isinstance(x, str) and x.startswith('[') else x)
+    # Removed slow ast.literal_eval since skills_list column isn't used
     
     # Load India GeoJSON
     url = "https://gist.githubusercontent.com/jbrobst/56c13bbbf9d97d187fea01ca62ea5112/raw/e388c4cae20aa53cb5090210a42ebb9b765c0a36/india_states.geojson"
@@ -93,6 +93,12 @@ try:
     st_model, st_dict, pred_model, pred_meta = load_models()
     model_type = pred_meta['type']
     model_accuracy = pred_meta.get('accuracy', 0.73) * 100 
+
+@st.cache_resource
+def get_job_embeddings_matrix():
+    return np.array([st_dict.get(s, np.zeros(384)) for s in naukri_df['skills_str']])
+
+job_embeddings_matrix = get_job_embeddings_matrix()
 except Exception as e:
     st.error(f"Error loading required data or models: {e}")
     st.stop()
@@ -101,6 +107,22 @@ all_skills_raw = skill_demand['skill'].dropna().astype(str).tolist()
 all_skills = sorted(list(set([s.strip().lower() for s in all_skills_raw if s.strip()])))
 
 # --- Helper Functions ---
+def predict_match_likelihood_batch(skills_strs, experience, state_ur):
+    if not skills_strs: return []
+    embs = st_model.encode(skills_strs)
+    N = len(skills_strs)
+    exp_col = np.full((N, 1), experience)
+    ur_col = np.full((N, 1), state_ur)
+    feats = np.hstack((exp_col, ur_col, embs))
+    
+    if model_type == 'mlp':
+        with torch.no_grad():
+            t_feats = torch.FloatTensor(feats)
+            probs = pred_model(t_feats).numpy().flatten()
+    else:
+        probs = pred_model.predict_proba(feats)[:, 1]
+    return probs
+
 def predict_match_likelihood(skills_str, experience, state_ur):
     emb = st_model.encode([skills_str])[0]
     feats = np.hstack(([experience, state_ur], emb)).reshape(1, -1)
@@ -115,8 +137,7 @@ def predict_match_likelihood(skills_str, experience, state_ur):
 
 def get_job_examples(skills_str, top_n=3):
     user_vec = st_model.encode([skills_str])
-    job_embeddings = np.array([st_dict.get(s, np.zeros(384)) for s in naukri_df['skills_str']])
-    sim_scores = cosine_similarity(user_vec, job_embeddings).flatten()
+    sim_scores = cosine_similarity(user_vec, job_embeddings_matrix).flatten()
     top_indices = sim_scores.argsort()[-top_n:][::-1]
     return naukri_df.iloc[top_indices]['job_title'].unique().tolist()[:top_n]
 
@@ -930,30 +951,23 @@ elif st.session_state['active_page'] == "Compare Skills":
         st.divider()
         
         def get_metrics(skill):
-            # Load mapping map if not already loaded (cache it in session state or just read it)
             if 'skill_map' not in st.session_state:
                 import json
                 with open('data/skill_normalization_map.json', 'r') as f:
                     st.session_state.skill_map = json.load(f)
             
-            # Find all raw skills that map to this canonical skill
             target_raw_skills = set()
             for raw, canonicals in st.session_state.skill_map.items():
                 if skill in canonicals:
                     target_raw_skills.add(raw.lower())
             
-            # Create a mask by checking if any of the target raw skills are in the job's skills string
-            # For speed, we can use a regex pattern of the target raw skills
             if not target_raw_skills:
-                # Fallback if somehow not in map
-                mask = naukri_df['skills_str'].str.contains(skill, case=False, na=False)
+                mask = naukri_df['skills_str'].str.contains(skill, case=False, na=False, regex=False)
             else:
                 import re
-                # Escape and join to form a regex. Note: large regex might be slow.
-                # Alternative: Use apply with set intersection.
-                mask = naukri_df['skills_str'].apply(
-                    lambda x: any(rs in str(x).lower() for rs in target_raw_skills)
-                )
+                escaped_skills = [re.escape(rs) for rs in target_raw_skills]
+                pattern = '|'.join(escaped_skills)
+                mask = naukri_df['skills_str'].str.contains(pattern, case=False, na=False, regex=True)
                 
             matched = naukri_df[mask]
             total_postings = len(matched)
@@ -1137,9 +1151,11 @@ elif st.session_state['active_page'] == "Get My Recommendation":
                     break
         
         uplift_results = []
-        for new_skill in skills_to_test:
-            new_str = effective_skills_str + " " + new_skill
-            new_prob = predict_match_likelihood(new_str, s_user_exp, state_ur)
+        new_strs = [effective_skills_str + " " + new_skill for new_skill in skills_to_test]
+        new_probs = predict_match_likelihood_batch(new_strs, s_user_exp, state_ur)
+        for i, new_skill in enumerate(skills_to_test):
+            new_str = new_strs[i]
+            new_prob = new_probs[i]
             uplift = new_prob - live_prob
             uplift_results.append({
                 'Recommended Skill': new_skill.title(),
