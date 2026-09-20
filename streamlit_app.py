@@ -18,8 +18,8 @@ import io
 import textwrap
 
 def render_html(html_content: str):
-    import textwrap
-    cleaned = textwrap.dedent(html_content)
+    # Strip all leading whitespace to completely prevent Markdown code blocks
+    cleaned = "\n".join([line.lstrip() for line in html_content.split("\n")])
     st.markdown(cleaned, unsafe_allow_html=True)
 
 # 1. Page Config
