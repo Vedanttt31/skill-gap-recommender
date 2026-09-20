@@ -18,8 +18,8 @@ import io
 import textwrap
 
 def render_html(html_content: str):
-    # Strip all leading spaces from every line to prevent Markdown code blocks
-    cleaned = "\n".join([line.lstrip() for line in html_content.split("\n")])
+    import textwrap
+    cleaned = textwrap.dedent(html_content)
     st.markdown(cleaned, unsafe_allow_html=True)
 
 # 1. Page Config
@@ -603,7 +603,7 @@ if st.session_state['active_page'] == "Home":
     render_html('''
     <style>
         /* Custom Button Styling */
-        div[data-testid="stMarkdownContainer"]:has(.hero-btn-wrapper) + div button {
+        div[data-testid="stElementContainer"]:has(.hero-btn-wrapper) + div[data-testid="stElementContainer"] button {
             background-color: white !important;
             color: black !important;
             border-radius: 50px !important;
@@ -612,7 +612,7 @@ if st.session_state['active_page'] == "Home":
             padding: 0.6rem 1.4rem !important;
             font-size: 1rem !important;
         }
-        div[data-testid="stMarkdownContainer"]:has(.hero-btn-wrapper) + div button:hover {
+        div[data-testid="stElementContainer"]:has(.hero-btn-wrapper) + div[data-testid="stElementContainer"] button:hover {
             background-color: #f0f0f0 !important;
             color: black !important;
             border: none !important;
@@ -930,7 +930,31 @@ elif st.session_state['active_page'] == "Compare Skills":
         st.divider()
         
         def get_metrics(skill):
-            mask = naukri_df['skills_str'].str.contains(skill, case=False, na=False)
+            # Load mapping map if not already loaded (cache it in session state or just read it)
+            if 'skill_map' not in st.session_state:
+                import json
+                with open('data/skill_normalization_map.json', 'r') as f:
+                    st.session_state.skill_map = json.load(f)
+            
+            # Find all raw skills that map to this canonical skill
+            target_raw_skills = set()
+            for raw, canonicals in st.session_state.skill_map.items():
+                if skill in canonicals:
+                    target_raw_skills.add(raw.lower())
+            
+            # Create a mask by checking if any of the target raw skills are in the job's skills string
+            # For speed, we can use a regex pattern of the target raw skills
+            if not target_raw_skills:
+                # Fallback if somehow not in map
+                mask = naukri_df['skills_str'].str.contains(skill, case=False, na=False)
+            else:
+                import re
+                # Escape and join to form a regex. Note: large regex might be slow.
+                # Alternative: Use apply with set intersection.
+                mask = naukri_df['skills_str'].apply(
+                    lambda x: any(rs in str(x).lower() for rs in target_raw_skills)
+                )
+                
             matched = naukri_df[mask]
             total_postings = len(matched)
             
